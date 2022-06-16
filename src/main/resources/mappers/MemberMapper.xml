@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.mypizza.MemberMapper">
+  	<insert id="insert">
+  		INSERT INTO member(
+		email,passwd,username,zipcode,addrload,addrdetail,filename)
+		VALUES(#{email},#{passwd},#{username},#{zipcode},#{addrload},#{addrdetail},#{filename})
+  	</insert>
+  	<!-- 네이버 간편가입 -->
+  	<insert id="insert_simplejoin">
+  		INSERT INTO member(email,username,simplejoin)
+		VALUES(#{email},#{username},#{simplejoin})
+  	</insert>
+  	
+  	<select id="selectList" resultType="Member">
+  		SELECT*FROM member
+		WHERE #{findkey} LIKE concat('%',#{findvalue},'%')
+  	</select>
+  	
+  	<!-- <select id="selectList_join" resultType="JoinInfo">
+  		SELECT * FROM joininfo
+  		WHERE joindate like concat('%',#{findvalue},'%')
+  		UNION all
+		select '합계', sum(join0), sum(join1), sum(join2) from joininfo
+		WHERE joindate like concat('%',#{findvalue},'%')
+  	</select> -->
+  	
+  	<select id="selectOne" resultType="Member">
+  		SELECT*FROM member
+		WHERE email = #{email}
+  	</select>
+  	
+  	<update id="update">
+  		UPDATE member
+		SET passwd = #{passwd},
+			username = #{username},
+			zipcode = #{zipcode},
+			addrload = #{addrload},
+			addrdetail = #{addrdetail},
+			filename = #{filename},
+			modidate = now()
+		WHERE email = #{email}
+  	</update>	
+  	<update id="update_emailauth">
+  		UPDATE member
+		SET emailauth = 1
+		WHERE email = #{email}
+  	</update>
+  	
+  	<delete id="delete">
+  		DELETE FROM member
+  	</delete>
+  </mapper>

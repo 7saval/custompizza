@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>커스텀피자</title>
+</head>
+<body>
+	<header>
+		<h2> <a href="${path}">CUSTOM PIZZA</a></h2>
+		<div>
+		<a href="${path}/login" id="pLogin">로그인</a>
+		<a href="${path}/logout" id="pLogout">로그아웃</a>
+		<a href="${path}/member/join" id="pJoin">회원가입</a>
+		<a href="${path}/member/info" id="pMyPage">마이페이지</a>
+		</div>
+	</header>
+	<hr>
+	<nav>
+		<div>
+			<a href="${path}/notice/">공지사항</a>
+			<a href="${path}/order/store">주문하기</a>
+			<a href="${path}/basket/info">장바구니</a>
+			<a href="${path}/board/">리뷰게시판</a>
+		</div>
+	</nav>
+	<hr>
+</body>
+</html>
