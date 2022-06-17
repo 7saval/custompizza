@@ -1,8 +1,13 @@
 package com.mycompany.mypizza.repository;
 
-import org.springframework.stereotype.Repository;
+import com.mycompany.mypizza.dto.Member;
 
-@Repository
-public class MemberRepository {
-
+public interface MemberRepository {
+	int insert(Member member);
+	int update(Member member);
+	int delete(String email);
+	int update_emailauth(String email);
+	Member selectOne(String email);
+	int insert_simplejoin(Member member);
+	
 }

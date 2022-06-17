@@ -6,13 +6,13 @@
   <mapper namespace="com.mycompany.mypizza.MemberMapper">
   	<insert id="insert">
   		INSERT INTO member(
-		email,passwd,username,zipcode,addrload,addrdetail,filename)
-		VALUES(#{email},#{passwd},#{username},#{zipcode},#{addrload},#{addrdetail},#{filename})
+		email,passwd,username,zipcode,addrload,addrdetail,mobile)
+		VALUES(#{email},#{passwd},#{username},#{zipcode},#{addrload},#{addrdetail},#{mobile})
   	</insert>
   	<!-- 네이버 간편가입 -->
   	<insert id="insert_simplejoin">
-  		INSERT INTO member(email,username,simplejoin)
-		VALUES(#{email},#{username},#{simplejoin})
+  		INSERT INTO member(email,username,mobile,simplejoin)
+		VALUES(#{email},#{username},#{mobile},#{simplejoin})
   	</insert>
   	
   	<select id="selectList" resultType="Member">

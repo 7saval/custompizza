@@ -1,8 +1,11 @@
 package com.mycompany.mypizza.service;
 
-import org.springframework.stereotype.Service;
+import java.util.Map;
 
-@Service
-public class MemberService {
+import com.mycompany.mypizza.dto.Member;
 
+public interface MemberService {
+	
+	Map<String, Object> insert(Member member, String path) throws Exception;
+	void update_emailauth(String email);
 }

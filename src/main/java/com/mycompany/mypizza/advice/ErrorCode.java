@@ -5,7 +5,7 @@ public enum ErrorCode {
 	SUCCESS_NAVER_LOGIN(0,"네이버 로그인 성공"),
 	SUCCESS_NAVER_JOIN(0,"네이버 간편가입 완료"),
 	ERROR_NAVER_EMAILAUTH(1,"네이버 인증이 유효하지 않습니다!"),
-	ERROR_NAVER_NOTEXIST(1,"네이버 간편가입 회원이 아닙니다!"),
+	ERROR_NAVER_NOTSIMPLEJOIN(1,"네이버 간편가입 회원이 아닙니다!"),
 	
 	SUCCESS_ADD(0,"추가성공"),
 	SUCCESS_MODIFY(0, "수정성공"),

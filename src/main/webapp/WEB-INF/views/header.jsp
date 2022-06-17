@@ -5,15 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>커스텀피자</title>
+<script type="text/javascript" src="${path}/resources/js/header.js"></script>
 </head>
 <body>
 	<header>
 		<h2> <a href="${path}">CUSTOM PIZZA</a></h2>
 		<div>
-		<a href="${path}/login" id="pLogin">로그인</a>
-		<a href="${path}/logout" id="pLogout">로그아웃</a>
-		<a href="${path}/member/join" id="pJoin">회원가입</a>
-		<a href="${path}/member/info" id="pMyPage">마이페이지</a>
+			<!-- 컨택스트패스 -->
+			<input type="hidden" value="${path}" id="contextPath">
+			<span id="sessionEmail">${sessionScope.email}</span>
+			<a href="${path}/login" id="pLogin">로그인</a>
+			<a href="${path}/logout" id="pLogout">로그아웃</a>
+			<a href="${path}/member/join" id="pJoin">회원가입</a>
+			<a href="${path}/member/info" id="pMyPage">마이페이지</a>
 		</div>
 	</header>
 	<hr>
