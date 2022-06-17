@@ -12,9 +12,9 @@
 <div class="container">
 	<%@ include file="header.jsp" %>
 	<div class="bxslider">
-        <div><img src="${path}/resources/images/pizza1.jpg"></div>
-        <div><img src="${path}/resources/images/pizza2.jpg"></div>
-        <div><img src="${path}/resources/images/pizza3.jpg"></div>
+        <div><img src="${path}/resources/images/pizza_1.jpg"></div>
+        <div><img src="${path}/resources/images/pizza_2.jpg"></div>
+        <div><img src="${path}/resources/images/pizza_3.jpg"></div>
     </div>
 </div>
 	<%@ include file="footer.jsp" %>

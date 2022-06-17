@@ -7,8 +7,9 @@
 <title>컴스텀피자</title>
 </head>
 <body>
-<hr>
-	<footer>
+	<div class="container">
+	<hr>
+		<footer>
 		<div>CUSTOM PIZZA</div>
 		<div>
 			<span>대표번호</span><br>
@@ -20,6 +21,7 @@
 				  CLOSED / 연중무휴
 			</span>
 		</div>
-	</footer>
+		</footer>
+	</div>
 </body>
 </html>
