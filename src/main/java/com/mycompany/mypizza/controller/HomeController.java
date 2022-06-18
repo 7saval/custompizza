@@ -95,4 +95,8 @@ public class HomeController {
 		
 	}
 	
+	//매장정보(map)
+	@GetMapping("store")
+	
+	
 }

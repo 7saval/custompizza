@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>매장선택</title>
+<title>찾아오시는길</title>
 </head>
 <body>
-	<h2>매장선택</h2>
+	<h2>매장 찾기</h2>
 </body>
 </html>
