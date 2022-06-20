@@ -8,7 +8,7 @@
 <script type="text/javascript" src="${path}/resources/js/header.js"></script>
 </head>
 <body>
-	<header>
+	<header class="d-flex justify-content-between">
 		<h2> <a href="${path}">CUSTOM PIZZA</a></h2>
 		<div>
 			<!-- 컨택스트패스 -->
@@ -22,7 +22,7 @@
 	</header>
 	<hr>
 	<nav>
-		<div class="navbar navbar-light" style="background-color: #e3f2fd;">
+		<div class="navbar navbar-light bg-light">
 			<a href="${path}/notice/">공지사항</a>
 			<a href="${path}/order/pizzamake">주문하기</a>
 			<a href="${path}/basket/info">장바구니<span class="badge badge-light">1</span></a>

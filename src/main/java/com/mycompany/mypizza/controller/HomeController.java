@@ -95,8 +95,24 @@ public class HomeController {
 		
 	}
 	
+	//아이디찾기 폼 이동
+	@GetMapping("findId")
+	public void findId() {
+		
+	}
+	
+	//아이디찾기 버튼 클릭 시
+	@PostMapping("findId")
+	public String findId(@RequestParam String username, RedirectAttributes rattr) {		
+		rattr.addFlashAttribute("msg", loginService.findId(username));
+		return "redirect:login";
+	}
+	
 	//매장정보(map)
 	@GetMapping("store")
+	public void store() {
+		
+	}
 	
 	
 }

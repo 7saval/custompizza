@@ -10,13 +10,18 @@ nav{
 	justify-content:space-around;
 }
 
-.navbar navbar-light{
-	font-size: 8pt;
-	color: white;
+/* footer{
+	display: flex;
+	justify-content: center;
+} */
+
+.footTitle{
+	text-align: center;
 }
 
-footer{
+.footInfo{
 	display: flex;
+	justify-content: center;
 }
 
 .bxslider{

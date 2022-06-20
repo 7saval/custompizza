@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("order")
 public class OrderController {
 	
-	@GetMapping("store")
-	public void store() {
+	@GetMapping("pizzamake")
+	public void pizzamake() {
 		
 	}
 

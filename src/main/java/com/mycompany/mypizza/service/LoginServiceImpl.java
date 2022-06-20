@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.mypizza.advice.ErrorCode;
 import com.mycompany.mypizza.dto.Member;
+import com.mycompany.mypizza.repository.LoginRepository;
 import com.mycompany.mypizza.repository.MemberRepository;
 
 @Service
@@ -13,6 +14,8 @@ public class LoginServiceImpl implements LoginService {
 	
 	@Autowired
 	private MemberRepository memberRepository;
+	@Autowired
+	private LoginRepository loginRepository;
 	
 	//암호화 객체
 	@Autowired
@@ -44,6 +47,18 @@ public class LoginServiceImpl implements LoginService {
 		}
 		//성공
 		return ErrorCode.SUCCESS_LOGIN;
+	}
+
+	@Override
+	public String findId(String username) {
+		// 아이디 찾기
+		String dbEmail = loginRepository.selectId(username);
+		//1) 아이디 존재하지 않으면
+		if(dbEmail == null) {
+			return "이메일이 존재하지 않습니다";
+		}
+		//2)아이디 있으면 아이디값 출력
+		return "당신의 이메일은 "+ dbEmail+"입니다";
 	}
 
 }
