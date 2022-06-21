@@ -9,23 +9,3 @@ nav{
 	display: flex;
 	justify-content:space-around;
 }
-
-/* footer{
-	display: flex;
-	justify-content: center;
-} */
-
-.footTitle{
-	text-align: center;
-}
-
-.footInfo{
-	display: flex;
-	justify-content: center;
-}
-
-.bxslider{
-	display: block;
-	margin-left: auto;
-	margin-right: auto; 
-}
