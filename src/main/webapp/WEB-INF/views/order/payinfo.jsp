@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>장바구니</title>
+<title>결제 정보</title>
 </head>
 <body>
-	<h2>장바구니</h2>
+	<h2>결제 정보</h2>
+	
+	${order.order_master}
+	${order.details }
+	
+	
 </body>
 </html>

@@ -11,5 +11,13 @@
 	  	<!-- 매퍼 resultType의 알리아스 -->
 		<typeAliases>
 			<typeAlias type="com.mycompany.mypizza.dto.Member" alias="Member"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Board" alias="Board"/>
+			<typeAlias type="com.mycompany.mypizza.dto.BoardFile" alias="BoardFile"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Reply" alias="Reply"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Highoption" alias="Highoption"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Lowoption" alias="Lowoption"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Order_master" alias="Order_master"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Order_detail" alias="Order_detail"/>
+			<typeAlias type="com.mycompany.mypizza.dto.Notice" alias="Notice"/>
 		</typeAliases>
-  </configuration>
+</configuration>

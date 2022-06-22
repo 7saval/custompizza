@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.mypizza.LowoptionMapper">
+  	<insert id="insert">
+		insert into lowoption(hcode,lcode,lname,price)
+		values (#{hcode}, #{lcode} , #{lname}, #{price})
+  	</insert>
+  	
+  	<update id="update">
+		update lowoption
+		set lname = #{lname}
+		where hcode =#{hcode} and lcode=#{lcode}
+  	</update>
+  	
+  	<delete id="delete">
+		delete from lowoption
+		where hcode =#{hcode} and lcode=#{lcode}
+  	</delete>
+  	
+  	<select id="selectOne" resultType="Lowoption">
+		select * from lowoption
+		where hcode =#{hcode} and lcode=#{lcode}
+  	</select>
+  	
+  	
+  	<select id="selectList" resultType="Lowoption">
+		select h.hname, l.*
+		from highoption h join lowoption l on (h.hcode = l.hcode)
+		order by hcode
+  	</select>
+  </mapper>

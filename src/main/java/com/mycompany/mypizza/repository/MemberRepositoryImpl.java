@@ -1,5 +1,8 @@
 package com.mycompany.mypizza.repository;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +37,11 @@ public class MemberRepositoryImpl implements MemberRepository {
 	@Override
 	public Member selectOne(String email) {
 		return sqlSession.selectOne("com.mycompany.mypizza.MemberMapper.selectOne", email);
+	}
+	
+	@Override
+	public List<Member> selectList(Map<String, String> map) {
+		return sqlSession.selectList("org.company.mypizza.MemberMapper.selectList", map);
 	}
 	
 	@Override

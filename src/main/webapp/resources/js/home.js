@@ -8,6 +8,6 @@ $(function(){
         autoControls: true,
         stopAutoOnClick: true,
         pager: true,
-        slideWidth: 1000
+        slideWidth: 600
     });
 });

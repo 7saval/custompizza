@@ -40,7 +40,7 @@
 			zipcode = #{zipcode},
 			addrload = #{addrload},
 			addrdetail = #{addrdetail},
-			filename = #{filename},
+			mobile = #{mobile},
 			modidate = now()
 		WHERE email = #{email}
   	</update>	

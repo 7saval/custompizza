@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.mypizza.Order_masterMapper">
+  	<insert id="insert">
+		insert into order_master (receipt_time, email, store, qty, price, payment)
+		values (#{receipt_time},#{email},#{store},#{qty},#{price},#{payment})
+  	</insert>
+  	
+  	<update id="update">
+		update order_master
+		set receipt_time =#{receipt_time},
+			email = #{email},
+		    store = #{store},
+		    qty = #{qty},
+		    price = #{price},
+		    payment = #{payment}
+		where order_no =#{order_no}
+  	</update>
+  	
+  	<delete id="delete">
+		delete from order_master
+		where order_no = #{order_no}
+  	</delete>
+  	
+  	<select id="selectOne" resultType="Order_master">
+		select * from order_master
+		where order_no = #{order_no}
+  	</select>
+  	
+  	<select id="selectList" resultType="Order_master">
+		select * from order_master
+		where ${findkey} like concat('%', ${findvalue}, '%' )
+  	</select>
+  </mapper>

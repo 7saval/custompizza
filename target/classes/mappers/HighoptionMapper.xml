@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.mypizza.HighoptionMapper">
+  	<insert id="insert">
+		insert into highoption(hcode,hname)
+		values (#{hcode},#{hname})
+  	</insert>
+  	
+  	<update id="update">
+		update highoption
+		set hname =#{hname}
+		where hcode =#{hcode}
+  	</update>
+  	
+  	<delete id="delete">
+		delete from highoption
+		where hcode=#{hcode}
+  	</delete>
+  	
+  	<select id="selectOne" resultType="Highoption">
+		select * from highoption
+		where hcode =#{hcode}
+  	</select>
+  	
+  	<select id="selectList" resultType="Highoption">
+		select * from highoption
+  	</select>
+  </mapper>

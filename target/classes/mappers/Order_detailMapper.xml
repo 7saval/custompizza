@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.mycompany.mypizza.Order_detailMapper">
+  	<insert id="insert">
+		insert into order_detail values (#{order_no},#{detail_no},#{hcode},#{lcode})
+  	</insert>
+  	
+  	<update id="update">
+		update order_detail
+		set hcode=#{hcode}, lcode=#{lcode}
+		where order_no=#{order_no} and detail_no=#{detail_no}
+  	</update>
+  	
+  	
+  	<!-- 주문번호 별 다 삭제 -->
+  	<delete id="delete">
+		delete from order_detailboard
+		where order_no =#{order_no}
+  	</delete>
+  	
+  	<!-- 주문번호 별 조회 -->
+  	<select id="selectOne" resultType="Order_detail">
+		select * from order_detail where order_no =#{order_no}
+  	</select>
+  	
+  	
+  	<select id="selectList" resultType="Order_detail">
+		select * from order_detail order by order_no desc
+  	</select>
+  </mapper>
