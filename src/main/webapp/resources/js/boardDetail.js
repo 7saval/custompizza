@@ -4,7 +4,6 @@
  //삭제버튼 클릭시
 function removeCheck(path, bnum){
 	if(!confirm('삭제 하시겠습니까?')) return ;
-
 	location.href=path+'/board/remove?bnum='+bnum;
 }
 

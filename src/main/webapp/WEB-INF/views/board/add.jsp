@@ -20,12 +20,16 @@
 				<td><input type="text" name="email" value="${sessionScope.email}" readonly> </td>
 			</tr>
 			<tr>
-				<th>리뷰</th>
-				<td><input type="text" name="subject"> </td>
+				<th>제목</th>
+				<td><input type="text" name="subject"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td> <textarea name="content" rows="5" cols="25"></textarea>   </td>
 			</tr>
 			
 			<tr>
-				<th>사진리뷰 <br><button onclick="fileAdd(event)">+</button></th>
+				<th>사진첨부 <br><button onclick="fileAdd(event)">+</button></th>
 				<td>
 					<div id="divFiles">
 						<input type="file" name="files"> <br>
@@ -35,7 +39,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button onclick="location.href='${path}/board/list'">저장</button>
+					<button>저장</button>
 					<button type="reset">취소</button>
 				</td>
 			</tr>

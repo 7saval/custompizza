@@ -10,10 +10,8 @@
 </head>
 <body>
 	${page} 
-	
-<%@ include file="../header.jsp" %>
 <div class="container">
-
+	<%@ include file="../header.jsp" %>
 	<h2>리뷰게시판</h2>
 	<form action="${path}/board/list">
 		<select name="findkey">
@@ -24,7 +22,7 @@
 		</select>
 		<input type="text" name="findvalue" value="${page.findvalue}">
 		<button>조회</button>
-		<button>리뷰추가</button>	
+		<!-- <button>리뷰추가</button> -->	
 	</form>
 <%-- 	${blist} --%>
 	<table border="1">
@@ -55,6 +53,7 @@
 	
 	</table>
 	<%-- ${page} --%>
+	<button onclick="location.href='${path}/board/add'">글쓰기</button>
 	<hr>
 <c:if test="${page.startPage != 1}">
 		<a href="${path}/board/list?curPage=${page.startPage-1}">이전</a>

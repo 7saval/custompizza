@@ -36,9 +36,9 @@
 	
 	<!-- 파일저장경로 -->
 	<!-- new String("C:/javaprogramming/savedir"); -->
-	<!-- <bean id="savedir" class="java.lang.String">
+	<bean id="savedir" class="java.lang.String">
 		<constructor-arg value="C:/javaprogramming/savedir"/>
-	</bean> -->
+	</bean>
 	
 	<!-- 암호화 객체 -->
 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

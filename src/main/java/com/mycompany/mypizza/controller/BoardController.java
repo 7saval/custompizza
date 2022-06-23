@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.advice.ErrorCode;
 import com.mycompany.mypizza.dto.Board;
+import com.mycompany.mypizza.dto.BoardFile;
 import com.mycompany.mypizza.dto.Page;
 import com.mycompany.mypizza.service.BoardFileService;
 import com.mycompany.mypizza.service.BoardService;
@@ -51,11 +52,6 @@ public class BoardController {
 		// WEB-INF/views/board/list.jsp로 이동
 		
 	}
-	
-	
-	
-	
-	////오류날가능성높음
 
 	@GetMapping("add")
 	public void add() {
@@ -64,7 +60,7 @@ public class BoardController {
 	
 	//추가
 	@PostMapping("add")
-	public String add(Board board, List<Multipart> files,  HttpServletRequest request, RedirectAttributes rattr) throws Exception {
+	public String add(Board board, HttpServletRequest request, RedirectAttributes rattr) throws Exception {
 		//클라이언트 ip
 		//board.setIp(request.getRemoteAddr());
 		ErrorCode errorCode =  boardService.insert(board);
@@ -75,7 +71,16 @@ public class BoardController {
 		return "redirect:/board/";
 		
 	}
-	
+	//상세조회 폼으로 이동
+	@GetMapping("detail")
+	public void detail(@RequestParam int bnum, Model model, Board board) {
+		//조회수+1
+		boardService.updateReadCnt(bnum);
+		//게시물 한건 조회
+		model.addAttribute("board", boardService.selectOne(bnum));
+		//게시물 파일들 조회
+		model.addAttribute("bflist", boardFileService.selectList(bnum));
+	}
 	//수정폼으로 이동
 	@GetMapping("modify")
 	public void modify(@RequestParam int bnum, Model model) {
@@ -103,12 +108,16 @@ public class BoardController {
 		rattr.addFlashAttribute("msg", errorCode.getMsg()); //한번만 실행 파라메터
 		rattr.addAttribute("bnum", board.getBnum()); //url에 포함
 		
-		return "redirect:detail";
+		return "redirect:/board/detail";
 	}
 	
-
-	
-	
+	//삭제
+	@GetMapping("remove")
+	public String remove(@RequestParam int bnum, RedirectAttributes rattr) throws Exception {
+		ErrorCode errorCode = boardService.delete(bnum);
+		rattr.addFlashAttribute("msg", errorCode.getMsg());
+		return "redirect:/board/list";
+	}
 	
 	//좋아요+1
 	@ResponseBody

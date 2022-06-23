@@ -13,6 +13,8 @@
 
 </head>
 <body>
+	<div class="container">
+	<%@ include file="../header.jsp" %>
 	<h2>장바구니</h2>
 
 <%-- 
@@ -98,5 +100,7 @@
 		<hr>
 	<button>결제하기</button>
 	</form>
+	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

@@ -1,53 +1,69 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ include file="../include/include.jsp" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="../include/include.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>¼öÁ¤È­¸é</title>
+<meta charset="UTF-8">
+<title>ìˆ˜ì •í™”ë©´</title>
+<script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
-
-<%@ include file="../header.jsp" %>
-
-
-	<h2>¼öÁ¤</h2>
-<%-- 	${board}
+	<div class="container">
+	<%@ include file="../header.jsp"%>
+	<h2>ìˆ˜ì •</h2>
+	<%-- 	${board}
 	${bflist} --%>
-	<form action="${path}/board/modify" method="post" enctype="multipart/form-data">
+	<form id="frmModify" action="${path}/board/modify" method="post"
+		enctype="multipart/form-data">
 		<table border="1">
-					<tr>
-				<th>ÀÌ¸ŞÀÏ</th>
-				<td><input type="text" name="email" value="${sessionScope.email}" readonly> </td>
+			<tr>
+				<th>NO</th>
+				<td id="bnum">${board.bnum}</td>
 			</tr>
 			<tr>
-				<th>¸®ºä</th>
-				<td><input type="text" name="subject"> </td>
+				<th>ì‘ì„±ì</th>
+				<td>${board.email}</td>
 			</tr>
-			
 			<tr>
-				<th>ÆÄÀÏ <br><button onclick="fileAdd(event)">+</button></th>
+				<th>ì œëª©</th>
+				<td>${board.subject}</td>
+			</tr>
+			<tr>
+				<th>ë‚´ìš©</th>
+				<td><textarea rows="5" cols="25">${board.content}</textarea></td>
+			</tr>
+			<tr>
+				<th>ì‚¬ì§„ì²¨ë¶€ <br><button onclick="fileAdd(event)">+</button></th>
+				<!-- ê¸°ì¡´íŒŒì¼ë¦¬ìŠ¤íŠ¸ -->
+				
 				<td>
+					<!-- ì´ë¯¸ì§€ -->
+					<c:forEach var="boardfile" items="${bflist}">
+						<img alt="" src="${path}/savedir/${boardfile.filename}"
+							width="300">
+					</c:forEach>
+					<hr>
+					<!-- íŒŒì¼ëª… -->
+					<c:forEach var="boardfile" items="${bflist}">
+					${boardfile.filename} <input type="checkbox" name="removeFiles" value="${boardfile.bfnum}">ì‚­ì œ <br>
+					</c:forEach>
+					<hr>
 					<div id="divFiles">
 						<input type="file" name="files"> <br>
 					</div>
-					
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button>ÀúÀå</button>
-					<button>Ãë¼Ò</button>
+					<button>ìˆ˜ì •</button>
+					<button type="reset">ì·¨ì†Œ</button>
 				</td>
 			</tr>
-			
-			
 		</table>
-	
 	</form>
 
 
-
+	</div>
 </body>
 </html>

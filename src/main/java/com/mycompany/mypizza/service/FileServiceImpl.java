@@ -2,12 +2,12 @@ package com.mycompany.mypizza.service;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.File;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
 
 @Service
 public class FileServiceImpl implements FileService {
@@ -33,12 +33,12 @@ public class FileServiceImpl implements FileService {
 		String filename = System.currentTimeMillis() + "_"+ originFileName;
 		
 		//저장할 디렉토리 생성 
-//		if (!new File(savedir).isDirectory()) { //경로명이 없다면
-//			Files.createDirectory(Paths.get(savedir)); //경로명 path생성후 디렉토리 생성
-//		}
-//		
-//		//파일을 전송
-//		file.transferTo(new File(savedir, filename));
+		if (!(new File(savedir).isDirectory())) { //경로명이 없다면
+			Files.createDirectory(Paths.get(savedir)); //경로명 path생성후 디렉토리 생성
+		}
+		
+		//파일을 전송
+		file.transferTo(new File(savedir, filename));
 		
 		return filename;
 	}

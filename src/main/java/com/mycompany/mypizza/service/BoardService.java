@@ -13,7 +13,7 @@ public interface BoardService {
 	//열거형 반환
 	ErrorCode insert(Board board) throws Exception;
 	ErrorCode update(Board board,List<Integer> removeFiles) throws Exception;
-
+	ErrorCode delete(int bnum) throws Exception;
 	
 	//조회수+1
 	int updateReadCnt(int bnum);

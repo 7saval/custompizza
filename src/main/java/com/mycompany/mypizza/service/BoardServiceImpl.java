@@ -108,17 +108,17 @@ public class BoardServiceImpl implements BoardService {
 	
 	private void boardFilesSave(Board board) throws Exception {
 		//게시물 파일들 저장
-//		List<MultipartFile> files = board.getFiles();
-//		for(MultipartFile file:files) {
-//			String filename = fileService.fileUpload(file); 		//파일을 저장
-//			if (filename.equals("")) continue;  //파일이름이 공백일경우 저장하지 않는다
-//
-//			//게시물파일db저장 
-//			BoardFile boardFile = new BoardFile();
-//			boardFile.setBnum(board.getBnum()); //게시물의 bnum세팅
-//			boardFile.setFilename(filename);
-//			boardFileRepository.insert(boardFile);
-//		}
+		List<MultipartFile> files = board.getFiles();
+		for(MultipartFile file:files) {
+			String filename = fileService.fileUpload(file); 		//파일을 저장
+			if (filename.equals("")) continue;  //파일이름이 공백일경우 저장하지 않는다
+
+			//게시물파일db저장 
+			BoardFile boardFile = new BoardFile();
+			boardFile.setBnum(board.getBnum()); //게시물의 bnum세팅
+			boardFile.setFilename(filename);
+			boardFileRepository.insert(boardFile);
+		}
 	}
 
 	
@@ -133,7 +133,13 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepository.updateDisLikeCnt(bnum);
 		
 	}
-	
+
+	@Override
+	public ErrorCode delete(int bnum) throws Exception {
+		boardRepository.delete(bnum);
+		return ErrorCode.SUCCESS_REMOVE;
+	}
+
 	
 	
 

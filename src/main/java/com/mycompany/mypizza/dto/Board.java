@@ -1,6 +1,9 @@
 package com.mycompany.mypizza.dto;
 
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class Board {
 	
@@ -14,6 +17,16 @@ public class Board {
 	private Date regidate;
 	private Date modidate;
 	
+	private List<MultipartFile> files;
+	
+	public List<MultipartFile> getFiles() {
+		return files;
+	}
+
+	public void setFiles(List<MultipartFile> files) {
+		this.files = files;
+	}
+
 	public Board() {
 		super();
 	}
@@ -108,10 +121,8 @@ public class Board {
 	public String toString() {
 		return "Board [bnum=" + bnum + ", email=" + email + ", content=" + content + ", subject=" + subject
 				+ ", readcnt=" + readcnt + ", likecnt=" + likecnt + ", dislikecnt=" + dislikecnt + ", regidate="
-				+ regidate + ", modidate=" + modidate + "]";
+				+ regidate + ", modidate=" + modidate + ", files=" + files + "]";
 	}
-	
-	
-	
+
 
 }

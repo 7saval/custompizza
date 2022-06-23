@@ -1,61 +1,74 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    <%@ include file="../include/include.jsp" %>  
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="../include/include.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>»óÁ¦Á¶È¸È­¸é</title>
+<meta charset="UTF-8">
+<title>ìƒì„¸ì¡°íšŒí™”ë©´</title>
+<script type="text/javascript" src="${path}/resources/js/boardDetail.js"></script>
 </head>
 <body>
-
-
 	<%@ include file="../header.jsp" %>
-	<h2>´ñ±Û»ó¼¼Á¶È¸</h2>
-	<%-- ${board} --%>
-	<%-- ${bflist} --%>
+	<h2>ìƒì„¸ì¡°íšŒ</h2>
+	${bflist}
 	<table border="1">
 		<tr>
 			<th>NO</th>
 			<td id="bnum">${board.bnum}</td>
 		</tr>
 		<tr>
-			<th>ÀÛ¼ºÀÚ</th>
+			<th>ì‘ì„±ì</th>
 			<td>${board.email}</td>
 		</tr>
 		<tr>
-			<th>Á¦¸ñ</th>
+			<th>ì œëª©</th>
 			<td>${board.subject}</td>
 		</tr>
-		
-		
 		<tr>
-			<th>µî·ÏÀÏÀÚ</th>
+			<th>ë‚´ìš©</th>
+			<td> <textarea rows="5" cols="25" readonly="readonly">${board.content}</textarea></td>
+		</tr>
+		<tr>
+			<th>íŒŒì¼</th>
+			<td>
+				<c:forEach var="boardfile" items="${bflist}">
+					<img alt="" src="${path}/savedir/${boardfile.filename}" width="300">
+				</c:forEach>
+				<hr>
+				<c:forEach var="boardfile" items="${bflist}">
+					${boardfile.filename} <br>
+				</c:forEach>
+			</td>
+		</tr>
+		<tr>
+			<th>ë“±ë¡ì¼ì</th>
 			<td><fmt:formatDate value="${board.regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 		</tr>
-		
 		<tr>
-			<th>Á¶È¸¼ö</th>
+			<th>ìˆ˜ì •ì¼ì</th>
+			<td><fmt:formatDate value="${board.modidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+		</tr>
+		<tr>
+			<th>ì¡°íšŒìˆ˜</th>
 			<td>${board.readcnt}</td>
 		</tr>
 		<tr>
-			<!-- ÁÁ¾Æ¿ä -->
+			<!-- ì¢‹ì•„ìš” -->
 			<th><i class="fas fa-thumbs-up" id="like"></i></th>
 			<td id="likecnt">${board.likecnt}</td>
 		</tr>	
 		<tr>
-			<!-- ½È¾î¿ä -->
+			<!-- ì‹«ì–´ìš” -->
 			<th><i class="fas fa-thumbs-down" id="dislike"></i></th>
 			<td id="dislikecnt">${board.dislikecnt}</td>
 		</tr>
-		
-		
 		<tr>
 			<td colspan="2">
-				<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">¼öÁ¤ÇÏ±â</button>
-				<button id="replyAddShow">´ñ±Û</button>
-				<button onclick="removeCheck('${path}', ${board.bnum})">»èÁ¦ÇÏ±â</button>
-				<button onclick="location.href='${path}/board/list'">¸®½ºÆ®</button>
+				<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">ìˆ˜ì •í•˜ê¸°</button>
+				<button id="replyAddShow">ëŒ“ê¸€</button>
+				<button onclick="removeCheck('${path}', ${board.bnum})">ì‚­ì œí•˜ê¸°</button>
+				<button onclick="location.href='${path}/board/list'">ë¦¬ìŠ¤íŠ¸</button>
 			</td>
 		</tr>
 	</table>
@@ -63,13 +76,13 @@
 	
 	
 	
-	<!-- ´ñ±ÛÃß°¡ -->
+	<!-- ëŒ“ê¸€ì¶”ê°€ -->
 	
 	
-	<!-- ÀÏ´ÜÁÖ¼®Ã³¸® @@@@@@@@@@@@@¹»±î?? -->
+	<!-- ì¼ë‹¨ì£¼ì„ì²˜ë¦¬ @@@@@@@@@@@@@ë­˜ê¹Œ?? -->
 	<%-- <div class="card mb-2" id="divReplyAdd">
 		<div class="card-header bg-light">
-		        <i class="fa fa-comment fa"></i> REPLY Ãß°¡
+		        <i class="fa fa-comment fa"></i> REPLY ì¶”ê°€
 		        <input type="hidden" id="restep" size="3">
 		        <input type="hidden" id="relevel" size="3">
 		</div>
@@ -81,26 +94,26 @@
 					<input type="email" class="form-control ml-2" id="replyemail" value="${sessionScope.email}" readonly>
 				</div>
 				<textarea class="form-control" id="replycontent" rows="3"></textarea>
-				<button type="button" class="btn btn-dark mt-3" id="replyAdd">Ãß°¡</button>
-				<button type="button" class="btn btn-dark mt-3" id="replyCancel">Ãë¼Ò</button>
+				<button type="button" class="btn btn-dark mt-3" id="replyAdd">ì¶”ê°€</button>
+				<button type="button" class="btn btn-dark mt-3" id="replyCancel">ì·¨ì†Œ</button>
 			    </li>
 			</ul>
 		</div>
 	</div>	
 	
-	<!-- ´ñ±Û¼öÁ¤ -->
+	<!-- ëŒ“ê¸€ìˆ˜ì • -->
 	
 	<div class="card mb-2" id="divReplyModify">
 		<div class="card-header bg-light">
-			<i class="fa fa-comment fa"></i> REPLY ¼öÁ¤
+			<i class="fa fa-comment fa"></i> REPLY ìˆ˜ì •
 			<input type="hidden" id="replyrnumModify">
 		</div>
 		<div class="card-body">
 			<ul class="list-group list-group-flush">
 			    <li class="list-group-item">
 				<textarea class="form-control" id="replycontentModify" rows="3"></textarea>
-				<button type="button" class="btn btn-dark mt-3" id="replyModify">ÀúÀå</button>
-				<button type="button" class="btn btn-dark mt-3" id="replyModifyCancel">Ãë¼Ò</button>
+				<button type="button" class="btn btn-dark mt-3" id="replyModify">ì €ì¥</button>
+				<button type="button" class="btn btn-dark mt-3" id="replyModifyCancel">ì·¨ì†Œ</button>
 			    </li>
 			</ul>
 		</div>
@@ -108,7 +121,7 @@
 
 	
 	
-	<!-- ´ñ±Û¸®½ºÆ® -->
+	<!-- ëŒ“ê¸€ë¦¬ìŠ¤íŠ¸ -->
 	<div id="divReplyList"></div>
 </div>	 --%>
 
