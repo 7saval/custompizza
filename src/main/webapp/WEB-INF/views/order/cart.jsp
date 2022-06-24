@@ -17,11 +17,6 @@
 	<%@ include file="../header.jsp" %>
 	<h2>장바구니</h2>
 
-<%-- 
-	${order} <hr> 
-	${order.details} <hr>
---%>
-	
 	<hr>
 	<table>
 		<tr>
@@ -98,7 +93,7 @@
 		<input type="text" name="order_master.price" value="${price_sum}">
 	
 		<hr>
-	<button>결제하기</button>
+		<button>결제하기</button>
 	</form>
 	</div>
 	<%@ include file="../footer.jsp" %>

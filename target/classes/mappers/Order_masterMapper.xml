@@ -4,9 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.mycompany.mypizza.Order_masterMapper">
-  	<insert id="insert">
-		insert into order_master (receipt_time, email, store, qty, price, payment)
-		values (#{receipt_time},#{email},#{store},#{qty},#{price},#{payment})
+  	<insert id="insert" parameterType="Order_master" useGeneratedKeys="true" keyProperty="order_no">
+		insert into order_master (receipt_time, email, store, price, payment)
+		values (#{receipt_time},#{email},#{store},#{price},#{payment})
   	</insert>
   	
   	<update id="update">
@@ -14,7 +14,6 @@
 		set receipt_time =#{receipt_time},
 			email = #{email},
 		    store = #{store},
-		    qty = #{qty},
 		    price = #{price},
 		    payment = #{payment}
 		where order_no =#{order_no}

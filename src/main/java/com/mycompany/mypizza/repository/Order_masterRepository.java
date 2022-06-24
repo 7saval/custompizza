@@ -9,6 +9,6 @@ public interface Order_masterRepository {
 	int insert (Order_master order_master);
 	int update (Order_master order_master);
 	int delete (String order_no);
-	Order_master selectOne (String order_no);
+	Order_master selectOne_master (int order_no);
 	List<Order_master> selectList (Map<String, String> findmap);
 }

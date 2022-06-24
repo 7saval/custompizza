@@ -29,14 +29,8 @@ public class Order_detailRepositoryImpl implements Order_detailRepository {
 	}
 
 	@Override
-	public List<Order_detail> selectOne(int order_no) {
-		return sqlsession.selectOne("com.mycompany.mypizza.Order_detailMapper.selectOne",order_no);
-	}
-
-	@Override
-	public List<Order_detail> selectList() {
-		return sqlsession.selectList("com.mycompany.mypizza.Order_detailMapper.selectList");
-
+	public List<Order_detail> selectList_detail(int order_no) {
+		return sqlsession.selectList("com.mycompany.mypizza.Order_detailMapper.selectList",order_no);
 	}
 	
 }
