@@ -20,4 +20,9 @@ public class BoardFileServiceImpl implements BoardFileService {
 		return boardFileRepository.selectList(bnum);
 	}
 
+	@Override
+	public int deleteAll(int bnum) {
+		return boardFileRepository.deleteAll(bnum);
+	}
+
 }

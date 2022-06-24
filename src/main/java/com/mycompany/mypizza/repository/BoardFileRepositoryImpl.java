@@ -44,4 +44,9 @@ public class BoardFileRepositoryImpl  implements BoardFileRepository{
 		return sqlSession.selectList("com.mycompany.mypizza.BoardFileMapper.selectList", bnum);
 	}
 
+	@Override
+	public int deleteAll(int bnum) {
+		return sqlSession.delete("com.mycompany.mypizza.BoardFileMapper.deleteAll", bnum);
+	}
+
 }

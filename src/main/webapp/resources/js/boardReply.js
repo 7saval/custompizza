@@ -3,7 +3,7 @@
  */
 
  //윈도우가 로딩이 완료된 후
-window.addEventListener('load', ()=>{
+$(()=>{
 	const path = $('#contextpath').val();	
 	
 	//핸들바에서 사용 : 헬퍼만들기
@@ -17,8 +17,8 @@ window.addEventListener('load', ()=>{
 	//댓글창 초기화
 	const replyInit = ()=>{
 		//입력된 내용 지우기
-		document.getElementById('replycontent').value='';
-		
+		//document.getElementById('replycontent').value='';
+		$('#replycontent').val('');
 		//댓글추가 div 이동
 		const hr = document.getElementById(`hr`);
 		const divReplyAdd = document.getElementById('divReplyAdd');
@@ -35,12 +35,14 @@ window.addEventListener('load', ()=>{
 		
 	};
 	//댓글의 리스트 
-	const replyList = ()=> {
+	const replyList = ()=>{
 		
 		replyInit();//댓글창 초기화
 		
-		const bnum = document.getElementById('bnum').innerText;
-		//console.log(bnum);
+		//const bnum = document.getElementById('bnum').innerText;
+		//게시물 번호
+		const bnum = $('#bnum').text();
+		console.log(bnum);
 		//ajax 서버 호출(get)
 		fetch(`${path}/reply/list/${bnum}`)
 		.then(res=>res.json())
@@ -57,6 +59,20 @@ window.addEventListener('load', ()=>{
 		})
 		.catch(console.err);
 		
+		//jquery 비동기방식 서버 호출
+		$.ajax({
+			url : `${path}/board/like/${bnum}`,
+			type : 'put',
+			dataType : 'text', //전송받은 데이터 문자열로 
+			success : function(text){
+				alert(text);
+				console.log('리턴값:',text); //좋아요 likecnt
+				$('#likecnt').html(text);
+			},
+			error : function(err){
+				console.log(err);
+			}
+		});
 	};
 	
 	replyList(); //댓글의 리스트 출력 함수 호출
@@ -215,8 +231,4 @@ window.addEventListener('load', ()=>{
 		//댓글수정 창 숨기기
 		document.getElementById('divReplyModify').style.display = 'none';	
 	});
-	
-	
-	
-	
 });

@@ -97,8 +97,7 @@ public class BoardController {
 	@PostMapping("modify")
 	public String modify(Board board, 
 			@RequestParam(required = false) List<Integer> removeFiles,
-			HttpServletRequest request,
-			RedirectAttributes rattr) throws Exception {
+			HttpServletRequest request,RedirectAttributes rattr) throws Exception {
 		//사용자의 ip
 		//board.setIp(request.getRemoteAddr());
 		
@@ -108,12 +107,13 @@ public class BoardController {
 		rattr.addFlashAttribute("msg", errorCode.getMsg()); //한번만 실행 파라메터
 		rattr.addAttribute("bnum", board.getBnum()); //url에 포함
 		
-		return "redirect:/board/detail";
+		return "redirect:detail";
 	}
 	
 	//삭제
 	@GetMapping("remove")
 	public String remove(@RequestParam int bnum, RedirectAttributes rattr) throws Exception {
+		boardFileService.deleteAll(bnum);
 		ErrorCode errorCode = boardService.delete(bnum);
 		rattr.addFlashAttribute("msg", errorCode.getMsg());
 		return "redirect:/board/list";

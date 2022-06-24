@@ -11,5 +11,6 @@ public interface BoardFileRepository {
 	int delete(int bfnum);
 	BoardFile selectOne(int bfnum);
 	List<BoardFile> selectList(int bnum);
+	int deleteAll(int bnum);
 	
 }

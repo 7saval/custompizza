@@ -19,19 +19,19 @@
 		<table border="1">
 			<tr>
 				<th>NO</th>
-				<td id="bnum">${board.bnum}</td>
+				<td><input type="text" name="bnum" value="${board.bnum}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td>${board.email}</td>
+				<td><input type="text" name="email" value="${board.email}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>제목</th>
-				<td>${board.subject}</td>
+				<td><input type="text" name="subject" value="${board.subject}"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><textarea rows="5" cols="25">${board.content}</textarea></td>
+				<td><textarea rows="5" cols="25" name="content">${board.content}</textarea></td>
 			</tr>
 			<tr>
 				<th>사진첨부 <br><button onclick="fileAdd(event)">+</button></th>
@@ -62,8 +62,7 @@
 			</tr>
 		</table>
 	</form>
-
-
 	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

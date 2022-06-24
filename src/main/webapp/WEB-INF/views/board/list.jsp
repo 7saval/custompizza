@@ -9,7 +9,7 @@
 <title>리뷰게시판</title>
 </head>
 <body>
-	${page} 
+	<%-- ${page} --%> 
 <div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>리뷰게시판</h2>
@@ -66,6 +66,7 @@
 	<c:if test="${page.endPage<page.totPage}">
 		<a href="${path}/board/list?curPage=${page.endPage+1}">다음</a>
 	</c:if>
-</div>	
+</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

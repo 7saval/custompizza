@@ -84,7 +84,6 @@
 		UPDATE board
 		SET dislikecnt = dislikecnt +1
 		WHERE bnum = #{bnum}
-	
 	</update>
 	
 	
