@@ -1,5 +1,6 @@
 package com.mycompany.mypizza.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.dto.Lowoption;
 import com.mycompany.mypizza.dto.OrderSession;
@@ -64,22 +66,34 @@ public class OrderController {
 	
 	//cart view에서 <결제> 버튼 눌렀을때
 	@PostMapping("pay")
-	public String cart(@ModelAttribute("order")OrderSession order, Model model, HttpSession session) {
-		Order_master test = order.getOrder_master();
+	public String cart(@ModelAttribute("order")OrderSession order, Model model, HttpSession session, 
+			RedirectAttributes rattr) {
 		String email = (String) session.getAttribute("email");
-		
-		test.setEmail(email);
-		
-		order.setOrder_master(test);
+		//order에 email 세팅
+		Order_master order_master = order.getOrder_master();
+		order_master.setEmail(email);
+		order.setOrder_master(order_master);
+
 		orderService.insert_order(order);  //db에 저장
 		
-		Order_master master = orderService.selectOne_master(order, order.getOrder_master().getOrder_no());
-		List<Order_detail> dlist =  orderService.selectList_detail(order, order.getOrder_master().getOrder_no());
-		
-		
-		model.addAttribute("master",master);
+		rattr.addAttribute("order_no", order.getOrder_master().getOrder_no());
 
+		System.out.println( order.getOrder_master().getOrder_no());
+		return "redirect:payinfo";
+		
+
+	}
+
+	@GetMapping("payinfo")
+	public String gopayinfo(int order_no, Model model) {
+		Order_master master = orderService.selectOne_master(order_no);
+		List<Order_detail> dlist =  orderService.selectList_detail(order_no);
+
+
+		model.addAttribute("master",master);
 		model.addAttribute("dlist", dlist);
+		
 		return "/order/payinfo";
 	}
+	
 }

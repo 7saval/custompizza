@@ -7,12 +7,15 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <script type="text/javascript">
-	
-
+	if('${order.details}' == ''){
+		location.href='${path}/order/cart_nologin';
+		
+	}
 </script>
 
 </head>
 <body>
+
 	<div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>장바구니</h2>
@@ -93,7 +96,7 @@
 		<input type="text" name="order_master.price" value="${price_sum}">
 	
 		<hr>
-		<button>결제하기</button>
+		<button onclick="paycheck(event)">결제하기</button>
 	</form>
 	</div>
 	<%@ include file="../footer.jsp" %>

@@ -62,13 +62,13 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order_detail> selectList_detail(OrderSession order, int order_no) {
+	public List<Order_detail> selectList_detail(int order_no) {
 		List<Order_detail> dlist = order_detailRepository.selectList_detail(order_no); //피자디테일
 		return dlist;
 	}
 
 	@Override
-	public Order_master selectOne_master(OrderSession order, int order_no) {
+	public Order_master selectOne_master(int order_no) {
 		Order_master master = order_masterRepository.selectOne_master(order_no);
 		
 		return master;
