@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+
+/* cart_nosession */
+p {
+ 		text-align: center;
+}
+#goOrder{
+margin: auto;
+	align: center;
+	text-align: center;
+	cursor:pointer;
+	background-color:blue; 
+	color:white; 
+	width:150px;
+}
+
+
+/* pizzamake */
+.container_pm{
+	display:flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	width : 90%
+}
+
+.box {
+	width : 200px;
+	height : 230px;
+	margin : 10px;
+}

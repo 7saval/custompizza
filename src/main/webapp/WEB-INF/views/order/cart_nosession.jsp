@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="${path}/resources/css/order.css">
 </head>
 <body>
 <div class="container">
@@ -13,14 +15,13 @@
 	<h2>장바구니</h2>
 	
 	<hr>
-		장바구니가 비었습니다
+	<br>
+	<p>장바구니가 비었습니다</p>
+	<br><br><br>
 		
-		
-		<div  OnClick="location.href ='${path}/order/'" style="cursor:pointer; text-align: center; background-color:blue; color:white"> 
-		
-		주문하러 가기 
-		
-		</div>
+	<div id="goOrder"  OnClick="location.href ='${path}/order/'"> 
+		<br>주문하러 가기 <br><br>
+	</div>
 	</hr>
 	
 	

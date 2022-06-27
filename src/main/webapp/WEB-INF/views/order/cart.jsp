@@ -8,7 +8,7 @@
 <title>장바구니</title>
 <script type="text/javascript">
 	if('${order.details}' == ''){
-		location.href='${path}/order/cart_nologin';
+		location.href='${path}/order/cart_nosession';
 		
 	}
 </script>
@@ -23,11 +23,11 @@
 	<hr>
 	<table>
 		<tr>
-			<th>주문내역</th>
+			<th width="300px">주문내역</th>
 			<th>금액</th>
 		<tr>
 		<tr>
-			<td>
+			<td width="300px">
 			 	<c:forEach var="detail" items="${order.details}">
 					<c:if test="${detail.lcode ne null}">
 						${detail.hname} = ${detail.lname} <br>
@@ -75,8 +75,11 @@
 			<tr>
 				<td>
 					<fmt:formatDate value="<%= new java.util.Date() %>" pattern="yyyy-MM-dd"/> 
-					<input type="time"  min="11:00" max="20:00"  step="900" name="order_master.receipt_time">
+					<input type="time"  min="11:00" min="<%= new java.util.Date() %>" max="20:00"  step="600" name="order_master.receipt_time">
 				</td>
+			</tr>
+			<tr>
+				<td> 🍕오전 11시부터 오후 8시까지 10분 단위로 선택해주세요 </td>
 			</tr>
 		</table>
 		<br>
@@ -93,7 +96,7 @@
 			</tr>
 		</table>
 		
-		<input type="text" name="order_master.price" value="${price_sum}">
+		<input type="hidden" name="order_master.price" value="${price_sum}">
 	
 		<hr>
 		<button onclick="paycheck(event)">결제하기</button>

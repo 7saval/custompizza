@@ -20,6 +20,7 @@ import com.mycompany.mypizza.dto.Lowoption;
 import com.mycompany.mypizza.dto.OrderSession;
 import com.mycompany.mypizza.dto.Order_detail;
 import com.mycompany.mypizza.dto.Order_master;
+import com.mycompany.mypizza.dto.Page;
 import com.mycompany.mypizza.service.OrderService;
 
 @Controller
@@ -66,10 +67,10 @@ public class OrderController {
 	
 	//cart view에서 <결제> 버튼 눌렀을때
 	@PostMapping("pay")
-	public String cart(@ModelAttribute("order")OrderSession order, Model model, HttpSession session, 
+	public String cart(@ModelAttribute("order")OrderSession order, HttpSession session, 
 			RedirectAttributes rattr) {
 		String email = (String) session.getAttribute("email");
-		//order에 email 세팅
+		//order(session)에 email 세팅
 		Order_master order_master = order.getOrder_master();
 		order_master.setEmail(email);
 		order.setOrder_master(order_master);
@@ -78,17 +79,13 @@ public class OrderController {
 		
 		rattr.addAttribute("order_no", order.getOrder_master().getOrder_no());
 
-		System.out.println( order.getOrder_master().getOrder_no());
-		return "redirect:payinfo";
-		
-
+		return "redirect:payinfo"; //payinfo 호출
 	}
 
 	@GetMapping("payinfo")
-	public String gopayinfo(int order_no, Model model) {
+	public String goPayinfo(int order_no, Model model) {
 		Order_master master = orderService.selectOne_master(order_no);
 		List<Order_detail> dlist =  orderService.selectList_detail(order_no);
-
 
 		model.addAttribute("master",master);
 		model.addAttribute("dlist", dlist);
@@ -96,4 +93,13 @@ public class OrderController {
 		return "/order/payinfo";
 	}
 	
+	
+	//장바구니에 아무것도 없을때
+	@GetMapping("cart_nosession")
+	public void cart_nosession() {
+	}
+	
+	
+
+
 }
