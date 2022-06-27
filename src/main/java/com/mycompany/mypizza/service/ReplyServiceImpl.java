@@ -30,13 +30,13 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public List<Reply> selectList(int bnum) {
 		// TODO Auto-generated method stub
-		return  replyRepository.selectList(bnum);
+		return replyRepository.selectList(bnum);
 	}
 
 	@Override
 	public int delete(int rnum) {
 		// TODO Auto-generated method stub
-		return  replyRepository.delete(rnum);
+		return replyRepository.delete(rnum);
 	}
 
 	@Override

@@ -22,7 +22,7 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- 파일저장경로 (윈도우) -->
-	<resources mapping="/savedir/**" location="file:///C:/Users/leejh/Desktop/JAVA/savedir/" />
+	<resources mapping="/savedir/**" location="file:///C:/javaprogramming/savedir/" />
 	<!-- 파일저장경로 (리눅스) -->
 	<!-- <resources mapping="/savedir/**" location="file:///var/lib/tomcat9/webapps/savedir/" /> -->
 	

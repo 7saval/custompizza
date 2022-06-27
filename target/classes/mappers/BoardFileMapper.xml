@@ -17,6 +17,10 @@
 		DELETE FROM boardfile
 		WHERE bfnum = #{bfnum}
 	</delete>
+	<delete id="deleteAll">
+		DELETE FROM boardfile
+		WHERE bnum = #{bnum}
+	</delete>
 	<select id="selectOne" resultType="BoardFile">
 		SELECT * FROM boardfile
 		WHERE bfnum = #{bfnum}

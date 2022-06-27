@@ -3,9 +3,10 @@
  */
 
  //윈도우가 로딩이 완료된 후
-window.addEventListener('load', ()=>{
-	const path = $('#contextpath').val();	
-	
+$(()=>{
+	//컨택스트 패스
+	const path = $('#contextPath').val();	
+	//console.log(path);
 	//핸들바에서 사용 : 헬퍼만들기
 	Handlebars.registerHelper('levelSpace', function(relevel){
 		let result = '';
@@ -17,38 +18,47 @@ window.addEventListener('load', ()=>{
 	//댓글창 초기화
 	const replyInit = ()=>{
 		//입력된 내용 지우기
-		document.getElementById('replycontent').value='';
+		//document.getElementById('replycontent').value='';
+		$('#replycontent').val('');
 		
 		//댓글추가 div 이동
-		const hr = document.getElementById(`hr`);
-		const divReplyAdd = document.getElementById('divReplyAdd');
-		hr.after(divReplyAdd);
+		$('#hr').after($('#divReplyAdd'));
+		//const hr = document.getElementById(`hr`);
+		//const divReplyAdd = document.getElementById('divReplyAdd');
+		//hr.after(divReplyAdd);
+		
 		//댓글추가 창 숨기기
-		divReplyAdd.style.display = 'none';
+		//divReplyAdd.style.display = 'none';
+		$('#divReplyAdd').hide();
 		
 		//댓글수정 div 이동
-		const divReplyModify = document.getElementById('divReplyModify');
-		hr.after(divReplyModify);
+		$('#hr').after($('#divReplyModify'));
+		//const divReplyModify = document.getElementById('divReplyModify');
+		//hr.after(divReplyModify);
 		//댓글수정 창 숨기기
-		divReplyModify.style.display = 'none';
-		
+		//divReplyModify.style.display = 'none';
+		$('#divReplyModify').hide();
 		
 	};
+	
 	//댓글의 리스트 
-	const replyList = ()=> {
+	const replyList = ()=>{
 		
 		replyInit();//댓글창 초기화
 		
-		const bnum = document.getElementById('bnum').innerText;
+		//const bnum = document.getElementById('bnum').innerText;
+		//게시물 번호
+		const bnum = $('#bnum').text();
 		//console.log(bnum);
+		//console.log(path);
 		//ajax 서버 호출(get)
 		fetch(`${path}/reply/list/${bnum}`)
 		.then(res=>res.json())
 		.then(data=>{
-			//console.log(data);
-			/*탬플리소스가져오기*/
+			console.log(data);
+			/*탬플릿소스가져오기*/
 			const source = document.getElementById('template_source').innerHTML;
-			//console.log(source);
+			console.log(source);
 			//소스컴파일
 			const template = Handlebars.compile(source);
 			//컴파일된 데이터를 div넣기 
@@ -56,6 +66,21 @@ window.addEventListener('load', ()=>{
 			
 		})
 		.catch(console.err);
+		
+		//jquery 비동기방식 서버 호출
+		/*$.ajax({
+			url : `${path}/board/like/${bnum}`,
+			type : 'put',
+			dataType : 'text', //전송받은 데이터 문자열로 
+			success : function(text){
+				alert(text);
+				console.log('리턴값:',text); //좋아요 likecnt
+				$('#likecnt').html(text);
+			},
+			error : function(err){
+				console.log(err);
+			}
+		});*/
 		
 	};
 	
@@ -114,7 +139,7 @@ window.addEventListener('load', ()=>{
 		console.log(rnum);
 
 		//ajax 서버 호출
-		fetch(`${path}/reply/${rnum}`,{
+		/*fetch(`${path}/reply/${rnum}`,{
 			method : 'delete',
 		})
 		.then(res=>res.text())
@@ -122,7 +147,18 @@ window.addEventListener('load', ()=>{
 			alert(text);
 			replyList(); //댓글 리스트 호출
 		})
-		.catch(err=>console.log(err));
+		.catch(err=>console.log(err));*/
+		
+		$.ajax({
+			url : `${path}/reply/${rnum}`,
+			type : 'delete',
+			dataType : 'text',
+			success : (text)=>{ //컨트롤러 리턴값
+				alert(text);
+				replyList(); //댓글의 리스트 호출
+			},
+			error : console.error 
+		});
 	});
 	
 	//댓글리스트의 수정 버튼을 클릭했을때
@@ -165,6 +201,8 @@ window.addEventListener('load', ()=>{
 			restep,
 			relevel,
 		};
+		console.log(data);
+		console.log(typeof(data));
 		
 		//jquery 서버 호출
 		$.ajax({
@@ -172,12 +210,15 @@ window.addEventListener('load', ()=>{
 			type : 'post',
 			contentType : 'application/json', //보내는 데이터의 타입
 			data: JSON.stringify(data), //보내는 데이터  json의 문자열
-			dataType : 'text', //받을 데이터의 타입 
+			dataType : 'text', //받을 데이터의 타입 문자열로
 			success : (text)=>{
+				//alert(text);
 				console.log(text);
 				replyList(); //댓글의 리스트 호출
 			},
-			error : console.error
+			error : function(err){
+				console.log(err);
+			}
 			
 		});
 		
@@ -202,7 +243,7 @@ window.addEventListener('load', ()=>{
 			contentType : 'application/json',
 			data : JSON.stringify(data),//보낼데이터 json문자열 변환
 			success : (text)=>{
-				console.log(text);
+				alert(text);
 				replyList(); //댓글의 리스트 호출				
 			},
 			error : console.error
@@ -215,8 +256,4 @@ window.addEventListener('load', ()=>{
 		//댓글수정 창 숨기기
 		document.getElementById('divReplyModify').style.display = 'none';	
 	});
-	
-	
-	
-	
 });

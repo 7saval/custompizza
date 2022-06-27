@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
     <%@ include file="../include/include.jsp" %> 
     
 <!DOCTYPE html>
@@ -10,8 +9,7 @@
 <title>공지사항화면</title>
 </head>
 <body>
-	<h2>공지사항</h2>
-	
+	<div class="container">
 	<%@ include file="../header.jsp" %>
 		<h2>공지사항</h2>
 	<form action="${path}/board/list">
@@ -76,6 +74,7 @@
 	
 	
 	
-	
+	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

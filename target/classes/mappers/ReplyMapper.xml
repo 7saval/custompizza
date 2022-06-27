@@ -23,12 +23,12 @@
 		SELECT * FROM reply
 		WHERE rnum = #{rnum}
 	</select>
+	
 	<select id="selectList" resultType="Reply">
 		SELECT * FROM reply
 		WHERE bnum = #{bnum}
 		ORDER BY restep
 	</select>
-	
 	
 	<!-- 글순서를 재수정(restep+1) -->
 	<update id="updateRestep">
