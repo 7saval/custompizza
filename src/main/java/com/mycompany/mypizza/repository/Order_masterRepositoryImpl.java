@@ -36,8 +36,8 @@ public class Order_masterRepositoryImpl implements Order_masterRepository {
 	}
 
 	@Override
-	public List<Order_master> selectList(Map<String, String> findmap) {
-		return sqlsession.selectList("com.mycompany.mypizza.Order_masterMapper.selectList", findmap);
+	public List<Order_master> selectList(String email) {
+		return sqlsession.selectList("com.mycompany.mypizza.Order_masterMapper.selectList", email);
 	}
 
 }
