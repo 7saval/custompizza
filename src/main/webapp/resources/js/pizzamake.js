@@ -26,7 +26,8 @@ function orderCheck(e){
 	console.log(h002);
 	console.log(h003);
 	
-	const h001name = document.getElementById('h001').innerText;
+	//메시지 뿌려주기 위해서
+	const h001name = document.getElementById('h001').innerText; //사이즈 선택
 	const h002name = document.getElementById('h002').innerText;
 	const h003name = document.getElementById('h003').innerText;
 	console.log(h001name);
@@ -36,7 +37,7 @@ function orderCheck(e){
 	//필수선택 배열 
 	const selArr = [
 		{
-			code : h001,
+			code : h001, //배열(L, M, S)
 			name : h001name,
 		},
 		{
@@ -50,18 +51,20 @@ function orderCheck(e){
 		
 	];
 	
-	
-	for(var i =0; i < selArr.length ; i++){
-		var selCheck = false;
+	//사이즈(h001) : L, M , S 
+	//도우선택(h002) :
+	//소스선택(h003)
+	for(var i =0; i < selArr.length ; i++){ //3번 반복
+		var selCheck = false; //선택이 안되어 있다고 가정
 		for(var j=0; j< selArr[i].code.length; j++){
 			if (selArr[i].code[j].checked){
-				selCheck = true;
+				selCheck = true; //선택이 됬음
 				break;
 			}
 		}
-		if (!selCheck) {
+		if (!selCheck) { //한개라도 체크가 안되어 있다면
 			alert(selArr[i].name);
-			return ;
+			return ; //함수의 종료
 		}
 	}
 		
