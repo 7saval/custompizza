@@ -32,12 +32,15 @@
 			<tr> <th> 주문정보 </th></tr>
 			<tr>
 				<td> 
-					<c:forEach var="detail" items="${dlist}">
-						${detail.lname}
-					</c:forEach>
+						<c:forEach var="detail" items="${dlist}">
+							${detail.lname}
+						</c:forEach>
 				</td>
 			</tr>
-		
+		</table>
+		<table>
+			<th>금액</th>
+			<td>${master.price}</td>
 		</table>
 	
 </div>
