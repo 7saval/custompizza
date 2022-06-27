@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mycompany.mypizza.dto.Notice;
+import com.mycompany.mypizza.dto.NoticePage;
 import com.mycompany.mypizza.dto.Page;
 
 

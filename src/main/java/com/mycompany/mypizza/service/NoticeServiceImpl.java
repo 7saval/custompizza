@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mycompany.mypizza.advice.ErrorCode;
 import com.mycompany.mypizza.dto.Notice;
+import com.mycompany.mypizza.dto.NoticePage;
 import com.mycompany.mypizza.dto.Page;
 import com.mycompany.mypizza.repository.BoardRepository;
 import com.mycompany.mypizza.repository.NoticeRepository;

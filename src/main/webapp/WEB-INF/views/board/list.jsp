@@ -21,15 +21,15 @@
 			<option value="subcon" <c:out value="${page.findkey=='subcon'?'selected':''}"/>>제목+내용</option>
 		</select>
 		<input type="text" name="findvalue" value="${page.findvalue}">
-		<button>조회</button>
+		<button>검색</button>
 		<!-- <button>리뷰추가</button> -->	
 	</form>
 <%-- 	${blist} --%>
 	<table border="1">
 		<tr>
 			<th>No</th>
-			<th>리뷰</th>
-			<th>이메일</th>
+			<th>제목</th>
+			<th>작성자이메일</th>
 			<th>등록일</th>
 			<th>조회수</th>
 			<th>좋아요</th>
@@ -42,12 +42,9 @@
 				<td><a href="${path}/board/detail?bnum=${board.bnum}">${board.subject}</a> </td>
 				<td>${board.email}</td>
 				<td><fmt:formatDate value="${board.regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-				
 				<td>${board.readcnt}</td>
 				<td>${board.likecnt}</td>
 				<td>${board.dislikecnt}</td>
-			
-			
 			</tr>
 		</c:forEach>
 	

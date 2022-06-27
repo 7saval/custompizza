@@ -58,8 +58,8 @@ public class OrderController {
 	
 	//cart view (장바구니 화면)으로 들어가기
 	@GetMapping("cart")
-	public String gocart(OrderSession order, Model model) {
-		model.addAttribute("order",order);	//세션에 객체 할당
+	public String gocart(@ModelAttribute("order")OrderSession order, Model model) {
+		//model.addAttribute("order",order);	//세션에 객체 할당
 		
 		return "/order/cart";
 	}

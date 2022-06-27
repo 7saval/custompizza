@@ -52,5 +52,6 @@
   	
   	<delete id="delete">
   		DELETE FROM member
-  	</delete>
+		WHERE email = #{email}
+	</delete>
   </mapper>

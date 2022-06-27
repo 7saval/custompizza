@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mycompany.mypizza.advice.ErrorCode;
 import com.mycompany.mypizza.dto.Notice;
+import com.mycompany.mypizza.dto.NoticePage;
 import com.mycompany.mypizza.dto.Page;
 
 

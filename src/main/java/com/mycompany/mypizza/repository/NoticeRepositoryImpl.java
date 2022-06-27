@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mycompany.mypizza.dto.Notice;
+import com.mycompany.mypizza.dto.NoticePage;
 import com.mycompany.mypizza.dto.Page;
 
 @Repository
@@ -42,7 +43,7 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 	@Override
 	public List<Notice> selectList(Page page) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("com.mycompany.mypizza.NoticeMapper.selectList",page);
+		return sqlSession.selectList("com.mycompany.mypizza.NoticeMapper.selectList", page);
 	}
 
 	@Override
@@ -53,7 +54,7 @@ public class NoticeRepositoryImpl implements NoticeRepository {
 
 	@Override
 	public int selectTotalCnt(Page page) {
-		return sqlSession.selectOne("com.mycompany.mypizza.NoticeMapper.selectTotalCnt",page);
+		return sqlSession.selectOne("com.mycompany.mypizza.NoticeMapper.selectTotalCnt", page);
 	}
 
 }

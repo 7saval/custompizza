@@ -17,4 +17,5 @@ public interface MemberService {
 
 	ErrorCode update(Member member, String newPasswd) throws Exception;
 	
+	ErrorCode delete(String email) throws Exception;
 }

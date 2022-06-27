@@ -134,4 +134,11 @@ public class MemberServiceImpl implements MemberService {
 		memberRepository.update(member);
 		return ErrorCode.SUCCESS_MODIFY;
 	}
+	
+	@Override
+	public ErrorCode delete(String email) throws Exception {
+		memberRepository.delete(email);
+		return ErrorCode.SUCCESS_REMOVE;
+	}
+	
 }

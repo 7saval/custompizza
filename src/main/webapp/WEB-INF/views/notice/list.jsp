@@ -12,8 +12,7 @@
 <div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>공지사항</h2>
-	<form action="${path}/notice/list">
-
+	<%-- <form action="${path}/notice/list">
 		<select name="findkey">
 			<option value="subject" <c:out value="${page.findkey=='subject'?'selected':''}"/>>제목</option>
 			<option value="content" <c:out value="${page.findkey=='content'?'selected':''}"/>>내용</option>
@@ -21,7 +20,7 @@
 		</select>
 		<input type="text" name="findvalue" value="${page.findvalue}">
 		<button>조회</button>
-	</form>
+	</form> --%>
 	<table border="1">
 		<tr>
 		    <th>공지번호</th>

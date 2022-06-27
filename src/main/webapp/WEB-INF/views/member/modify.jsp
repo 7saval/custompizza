@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 수정</title>
 <script type="text/javascript" src="${path}/resources/js/memberJoin.js"></script>
 
 </head>
@@ -25,7 +25,7 @@
 				<td><input type="password" name="passwd" id="oldPasswd"> </td>
 			</tr>
 			<tr>
-				<th>변경비밀번호확인</th>
+				<th>변경비밀번호</th>
 				<td><input type="password" name="newPasswd" id="newPasswd"> </td>
 			</tr>
 			<tr>

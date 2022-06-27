@@ -12,22 +12,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.advice.ErrorCode;
 import com.mycompany.mypizza.dto.Notice;
+import com.mycompany.mypizza.dto.NoticePage;
 import com.mycompany.mypizza.dto.Page;
 import com.mycompany.mypizza.service.BoardService;
 import com.mycompany.mypizza.service.NoticeService;
 
 @Controller
 @RequestMapping("notice")
+@SessionAttributes("page")
 public class NoticeController {
 	@Autowired
 	private NoticeService noticeService;
-	
-	@Autowired
-	private BoardService boardService;
 	
 
 	@GetMapping("/")
@@ -41,7 +41,6 @@ public class NoticeController {
 	@GetMapping("list")
 	public void list(@ModelAttribute("page") Page page, Model model) {
 		model.addAttribute("nlist", noticeService.selectList(page));
-	
 	}
 	
 

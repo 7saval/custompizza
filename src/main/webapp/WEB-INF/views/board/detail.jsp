@@ -27,9 +27,9 @@
 			{{#levelSpace relevel}} <!-- 헬퍼작성:levelSpace(헬퍼의 이름) 들여쓰기 -->
 			{{/levelSpace}}
 			<div>
-				<span style = "display:inline;">{{rnum}}</span>, 
-				<span style = "display:inline;" id="restep{{rnum}}">{{restep}}</span>, 
-				<span style = "display:inline;" id="relevel{{rnum}}">{{relevel}}</span> <br>
+				<span style = "display:none;">{{rnum}}</span>
+				<span style = "display:none;" id="restep{{rnum}}">{{restep}}</span>
+				<span style = "display:none;" id="relevel{{rnum}}">{{relevel}}</span> <br>
 				이메일 : <span>{{email}}</span> <br>
 				내용 : <pre id='content{{rnum}}'>{{content}}</pre> <br>
 				<button class="reReplyAddShow" value="{{rnum}}">댓글</button>
@@ -67,10 +67,6 @@
 			<td>
 				<c:forEach var="boardfile" items="${bflist}">
 					<img alt="" src="${path}/savedir/${boardfile.filename}" width="300">
-				</c:forEach>
-				<hr>
-				<c:forEach var="boardfile" items="${bflist}">
-					${boardfile.filename} <br>
 				</c:forEach>
 			</td>
 		</tr>
