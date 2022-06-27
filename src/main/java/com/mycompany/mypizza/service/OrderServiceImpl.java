@@ -19,6 +19,7 @@ import com.mycompany.mypizza.repository.Order_masterRepository;
 public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private LowoptionRepository lowoptionRepository;
+
 	@Autowired
 	private Order_masterRepository order_masterRepository;
 	@Autowired
@@ -29,15 +30,6 @@ public class OrderServiceImpl implements OrderService {
 		//옵션리스트 구하기
 		return lowoptionRepository.selectList();
 	}
-	/*
-	 * for(MultipartFile file:files) { String filename =
-	 * fileService.fileUpload(file); //파일을 저장 if (filename.equals("")) continue;
-	 * //파일이름이 공백일경우 저장하지 않는다
-	 * 
-	 * //게시물파일db저장 BoardFile boardFile = new BoardFile();
-	 * boardFile.setBnum(board.getBnum()); //게시물의 bnum세팅
-	 * boardFile.setFilename(filename); boardFileRepository.insert(boardFile); }
-	 */
 
 	@Override
 	public void insert_order(OrderSession order) {
@@ -48,47 +40,38 @@ public class OrderServiceImpl implements OrderService {
 		order_masterRepository.insert(order_master);
 		
 		//order_deatail 리스트 넣기
+		Order_detail order_detail= new Order_detail();
+		order_detail.setOrder_no(order_master.getOrder_no()); 
+		
 		List<Order_detail> details = order.getDetails();
-		for(Order_detail order_detail : details ) {
-			/*String lcode = details.lcode();*/
+		int cnt =0;
+		for(int i=0; i<details.size(); i++ ) {
 			
-			/*
-			 * if(lcode.equals(details))
-			 */		}
+			if(details.get(i).getLcode() == null) continue;
+			
+			cnt++;
+			order_detail.setDetail_no(cnt);
+			order_detail.setHcode(details.get(i).getHcode());
+			order_detail.setLcode(details.get(i).getLcode());
+			order_detail.setLname(details.get(i).getLname());
+			
+			System.out.println(order_detail);
+			order_detailRepository.insert(order_detail);
+		}
+
 	}
 
-	
-	
-	private void detailsSave(Order_detail order_detail) {
-		//Order_detail를 저장....
-		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
 	@Override
-	public List<Order_detail> selectOne(OrderSession order, int order_no) {
-		List<Order_detail> dlist = order_detailRepository.selectOne(order_no); //피자디테일
-		
-		Map<String, String> details = new HashMap<>();
-		
-		order.getDetails(); // order_detail의 list형
-		
-	
-		//details.put("hcode", order.getDetails()???? )
-		
-		
-		return null;
+	public List<Order_detail> selectList_detail(OrderSession order, int order_no) {
+		List<Order_detail> dlist = order_detailRepository.selectList_detail(order_no); //피자디테일
+		return dlist;
 	}
 
+	@Override
+	public Order_master selectOne_master(OrderSession order, int order_no) {
+		Order_master master = order_masterRepository.selectOne_master(order_no);
+		
+		return master;
+	}
 
-	
 }

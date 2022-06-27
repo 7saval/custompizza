@@ -31,7 +31,7 @@ public class Order_masterRepositoryImpl implements Order_masterRepository {
 	}
 
 	@Override
-	public Order_master selectOne(String order_no) {
+	public Order_master selectOne_master(int order_no) {
 		return sqlsession.selectOne("com.mycompany.mypizza.Order_masterMapper.selectOne", order_no);
 	}
 

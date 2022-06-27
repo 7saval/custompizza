@@ -3,6 +3,8 @@ package com.mycompany.mypizza.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mycompany.mypizza.dto.Lowoption;
 import com.mycompany.mypizza.dto.OrderSession;
+import com.mycompany.mypizza.dto.Order_detail;
+import com.mycompany.mypizza.dto.Order_master;
 import com.mycompany.mypizza.service.OrderService;
 
 @Controller
@@ -33,7 +37,8 @@ public class OrderController {
 		
 		//옵션리스트 view에 뿌리기
 		model.addAttribute("olist",olist);
-		
+	
+
 		return "/order/pizzamake";
 	}
 	
@@ -41,6 +46,7 @@ public class OrderController {
 	@PostMapping("pizzamake")
 	public String pizzamake(@ModelAttribute("order")OrderSession order, Model model) {
 		/* System.out.println(order); */
+
 
 		//ordersession에 details(List<Order_detail>)담고 cart로 이동
 		return "/order/cart";
@@ -58,12 +64,22 @@ public class OrderController {
 	
 	//cart view에서 <결제> 버튼 눌렀을때
 	@PostMapping("pay")
-	public String cart(@ModelAttribute("order")OrderSession order, Model model) {
+	public String cart(@ModelAttribute("order")OrderSession order, Model model, HttpSession session) {
+		Order_master test = order.getOrder_master();
+		String email = (String) session.getAttribute("email");
 		
-		//orderService.insert_order(order);
+		test.setEmail(email);
+		
+		order.setOrder_master(test);
+		orderService.insert_order(order);  //db에 저장
+		
+		Order_master master = orderService.selectOne_master(order, order.getOrder_master().getOrder_no());
+		List<Order_detail> dlist =  orderService.selectList_detail(order, order.getOrder_master().getOrder_no());
+		
+		
+		model.addAttribute("master",master);
+
+		model.addAttribute("dlist", dlist);
 		return "/order/payinfo";
 	}
-	
-	
-
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -28,6 +29,7 @@ import com.mycompany.mypizza.service.BoardService;
 
 @Controller
 @RequestMapping("board")
+//@SessionAttributes("page")
 public class BoardController {
 	
 	@Autowired
@@ -81,6 +83,7 @@ public class BoardController {
 		//게시물 파일들 조회
 		model.addAttribute("bflist", boardFileService.selectList(bnum));
 	}
+	
 	//수정폼으로 이동
 	@GetMapping("modify")
 	public void modify(@RequestParam int bnum, Model model) {

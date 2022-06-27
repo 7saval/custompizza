@@ -23,9 +23,9 @@
 				<span style = "display:inline;" id="relevel{{rnum}}">{{relevel}}</span> <br>
 				이메일 : <span>{{email}}</span> <br>
 				내용 : <pre id='content{{rnum}}'>{{content}}</pre> <br>
-				<button class="rereplyAddShow" value="{{rnum}}">댓글</button>
-				<button class="rereplyModify" value="{{rnum}}">수정</button>
-				<button class="rereplyRemove" value="{{rnum}}">삭제</button>
+				<button class="reReplyAddShow" value="{{rnum}}">댓글</button>
+				<button class="reReplyModify" value="{{rnum}}">수정</button>
+				<button class="reReplyRemove" value="{{rnum}}">삭제</button>
 			</div>
 		</div>
 		<hr>
@@ -121,7 +121,6 @@
 	</div>	
 	
 	<!-- 댓글수정 -->
-	
 	<div class="card mb-2" id="divReplyModify">
 		<div class="card-header bg-light">
 			<i class="fa fa-comment fa"></i> REPLY 수정
@@ -138,12 +137,9 @@
 		</div>
 	</div>
 
-	
-	
 	<!-- 댓글리스트 -->
 	<div id="divReplyList"></div>
 </div>
-	</div>
 	<%@ include file="../footer.jsp" %>
 </body>
 </html>

@@ -23,9 +23,9 @@ $(()=>{
 			type : 'put',
 			dataType : 'text', //전송받은 데이터 문자열로 
 			success : function(text){
-				alert(text);
+				//alert(text);
 				console.log('리턴값:',text); //좋아요 likecnt
-				$('#likecnt').html(text);
+				$('#likecnt').text(text);
 			},
 			error : function(err){
 				console.log(err);
