@@ -31,6 +31,6 @@
   	
   	<select id="selectList" resultType="Order_master">
 		select * from order_master
-		where ${findkey} like concat('%', ${findvalue}, '%' )
+		where email like concat('%', ${findvalue}, '%' )
   	</select>
   </mapper>

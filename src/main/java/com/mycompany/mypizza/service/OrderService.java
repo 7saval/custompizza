@@ -16,5 +16,4 @@ public interface OrderService {
 	List<Order_detail> selectList_detail(int order_no); //주문번호 하나의 detail 리스트 ( 예, 주문번호 2번의 피자디테일..)
 	
 	
-	
 }

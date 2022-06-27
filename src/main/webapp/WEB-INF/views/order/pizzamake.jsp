@@ -7,38 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>피자만들기</title>
-<style type="text/css">
-	.container_pm{
-		display:flex;
-		flex-direction: row;
-		flex-wrap:wrap;
-		width : 90%
-	}
-	
-	.box {
-		width : 200px;
-		height : 230px;
-		margin : 10px;
-	}
-</style>
-<script type="text/javascript">
-	function selectRadio(e) {
-		
-		const gcode = e.target.className;
-		console.log(gcode);
-		
-		var radios = document.getElementsByClassName(gcode);
-		console.log(radios);
-		
-		for(var i=0; i< radios.length; i++ ){
-			if(e.target == radios[i])
-				radios[i].checked = true;
-			else
-				radios[i].checked = false;
-		}
-	}
-
-</script>
+<script type="text/javascript" src="${path}/resources/js/pizzamake.js"></script>
+<link rel="stylesheet" href="${path}/resources/css/order.css">
 </head>
 <body >
 <div class="container">
@@ -46,19 +16,19 @@
 	<h2>피자만들기</h2>
 	<%-- ${olist } --%>
 	
-	<form action="${path}/order/pizzamake" method="post">
+	<form action="${path}/order/pizzamake" method="post" id="frmOrder">
 		<c:set var="bhcode" value="first"/>
 
 	    <c:forEach var="option" items="${olist}" varStatus="status" >
 	     	
 			<c:if test="${bhcode eq 'first'}"> 
-				<h4>${option.hname} 선택</h4>
+				<h4 id="${option.hcode}">${option.hname} 선택</h4>
 				<div class="container_pm">	
 			</c:if>
 			<c:if test="${bhcode ne 'first' && option.hcode ne bhcode}"> 
 	 			</div> <!-- 열어준 container 닫기 -->
 				<br>
-				<h4>${option.hname} 선택</h4>
+				<h4 id="${option.hcode}">${option.hname} 선택</h4>
 				<div class="container_pm">
 	 		</c:if>
 	    	
@@ -72,7 +42,7 @@
 	                 <input type ="hidden" name ="details[${status.index}].price" value="${option.price}">
 	                 <%-- <input type ="hidden" name ="details[${status.index}].lcode" value="${option.lcode}"> --%>
 	                 
-	                 <input type="radio" name="details[${status.index}].lcode" value="${option.lcode}"  class="${option.hcode}" onclick="selectRadio(event)">
+	                 <input type="radio"  id="essential" name="details[${status.index}].lcode" value="${option.lcode}"  class="${option.hcode}" onclick="selectRadio(event)">
 	                 ${option.lname} (${option.price}원)
 	            </div>
 			</c:if>	            
@@ -97,8 +67,8 @@
 			</div> <!-- 열어준 container 닫기 --> 
 
 		<hr>
-		<button type="button">다시선택</button>
-		<button>주문하기</button>
+		<button type="reset">다시선택</button>
+		<button onclick="orderCheck(event)" >주문하기</button>
 	</form>
 
 </div>
