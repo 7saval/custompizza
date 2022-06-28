@@ -9,7 +9,7 @@
 <script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
 </head>
 <body>
-<div class="container">
+	<div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>공지 추가</h2>
 	<form action="${path}/notice/add" method="post" >
@@ -30,6 +30,7 @@
 			</tr>
 		</table>
 	</form>
-</div>	
+</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

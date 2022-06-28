@@ -9,6 +9,7 @@
 <script type="text/javascript" src="${path}/resources/js/noticeDetail.js"></script>
 </head>
 <body>
+	<div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>상세조회</h2>
 	<table border="1">
@@ -45,6 +46,7 @@
 			</td>
 		</tr>
 	</table>
-
+	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

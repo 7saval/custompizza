@@ -55,6 +55,7 @@
 	<c:if test="${page.endPage<page.totPage}">
 		<a href="${path}/notice/list?curPage=${page.endPage+1}">다음</a>
 	</c:if>
-</div>	
+</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>
