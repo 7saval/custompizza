@@ -117,4 +117,17 @@ public class MemberController {
 			return "redirect:info";
 		}
 	}
+	
+	//삭제
+	@GetMapping("remove")
+	public String remove(@RequestParam String email,HttpSession session ,RedirectAttributes rattr) throws Exception {
+		ErrorCode errorCode = memberService.delete(email);
+		rattr.addFlashAttribute("msg", errorCode.getMsg());
+		session.invalidate();
+		return "redirect:/";
+	}
+	
+	
+	
+	
 }

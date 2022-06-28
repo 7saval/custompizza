@@ -8,7 +8,6 @@
 	<insert id="insert">
 		insert into notice(n_subject,n_content)
 		values(#{n_subject},#{n_content})
-	
 	</insert>
 	
 	
@@ -35,10 +34,39 @@
 	</select>
 	
 	<select id="selectList" resultType="Notice">
-		select *from notice
-		where n_num LIKE concat('%' , #{n_num} , '%')
+		select*from notice
+		<!-- <include refid="find"/> -->  
+		order by n_num desc
+		limit #{startNum} , #{perPage}
 	</select>
 	
+	<!-- 전체게시물수 구하기 -->
+	 <select id="selectTotalCnt" resultType="int">
+		SELECT COUNT(*) totalCnt FROM notice
+	</select>  
+	
+	<!-- <sql id="find">
+		<if test="findkey =='email'">
+			where email LIKE  concat('%' , #{findvalue} , '%')
+		</if>
+		<if test="findkey =='subject'">
+			where subject LIKE concat('%' , #{findvalue} , '%')
+		</if>
+		<if test="findkey =='content'">
+			where content LIKE concat('%' , #{findvalue} , '%')
+		</if>		
+		<if test="findkey=='subcon'">
+			where (subject LIKE concat('%' , #{findvalue} , '%')
+			   or content LIKE concat('%' , #{findvalue} , '%'))
+		</if>	
+	</sql> -->
+	
+	<!-- 조회수 + 1 -->
+	<update id="updateReadCnt">
+		UPDATE notice
+		SET n_readcnt = n_readcnt +1
+		WHERE n_num = #{n_num}
+	</update>
 
 	
 	

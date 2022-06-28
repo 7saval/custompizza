@@ -5,22 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상세조회화면</title>
+<title>리뷰상세조회</title>
 <!-- 핸들바 템플릿 cdn 연결 -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script type="text/javascript" src="${path}/resources/js/boardDetail.js"></script>
 <script type="text/javascript" src="${path}/resources/js/boardReply.js"></script>
-
+<style type="text/css">
+	/* 댓글 처리 들여쓰기 */
+	.divSpace{
+	width: 50px;
+	}
+	
+	.divReply{
+		display: flex;
+	}
+</style>
 <!-- 댓글 리스트 템플릿 소스 -->
 <script type="text/x-handlebars-template" id="template_source">
 	{{#each .}}
 		<div class="divReply" id='reply{{rnum}}'>
-			{{#levelSpace relevel}} <!-- 헬퍼작성:levelSpace(헬퍼의 이름) -->
+			{{#levelSpace relevel}} <!-- 헬퍼작성:levelSpace(헬퍼의 이름) 들여쓰기 -->
 			{{/levelSpace}}
 			<div>
-				<span style = "display:inline;">{{rnum}}</span>, 
-				<span style = "display:inline;" id="restep{{rnum}}">{{restep}}</span>, 
-				<span style = "display:inline;" id="relevel{{rnum}}">{{relevel}}</span> <br>
+				<span style = "display:none;">{{rnum}}</span>
+				<span style = "display:none;" id="restep{{rnum}}">{{restep}}</span>
+				<span style = "display:none;" id="relevel{{rnum}}">{{relevel}}</span> <br>
 				이메일 : <span>{{email}}</span> <br>
 				내용 : <pre id='content{{rnum}}'>{{content}}</pre> <br>
 				<button class="reReplyAddShow" value="{{rnum}}">댓글</button>
@@ -58,10 +67,6 @@
 			<td>
 				<c:forEach var="boardfile" items="${bflist}">
 					<img alt="" src="${path}/savedir/${boardfile.filename}" width="300">
-				</c:forEach>
-				<hr>
-				<c:forEach var="boardfile" items="${bflist}">
-					${boardfile.filename} <br>
 				</c:forEach>
 			</td>
 		</tr>

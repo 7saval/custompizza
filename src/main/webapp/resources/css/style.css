@@ -9,3 +9,11 @@ nav{
 	display: flex;
 	justify-content:space-around;
 }
+
+.divSpace{
+	width: 50px;
+}
+
+.divReply{
+	display: flex;
+}

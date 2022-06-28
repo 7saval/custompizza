@@ -29,7 +29,7 @@ import com.mycompany.mypizza.service.BoardService;
 
 @Controller
 @RequestMapping("board")
-//@SessionAttributes("page")
+@SessionAttributes("page")
 public class BoardController {
 	
 	@Autowired

@@ -7,7 +7,7 @@ $(()=>{
 	//컨택스트 패스
 	const path = $('#contextPath').val();	
 	//console.log(path);
-	//핸들바에서 사용 : 헬퍼만들기
+	//핸들바에서 사용 : 헬퍼만들기 (댓글 처리시 들여쓰기)
 	Handlebars.registerHelper('levelSpace', function(relevel){
 		let result = '';
 		for(var i=0; i<relevel; i++)

@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원정보</title>
+<script type="text/javascript" src="${path}/resources/js/memberJoin.js"></script>
 </head>
 <body>
 <div class="container">
@@ -40,7 +41,8 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-			<button onclick="location.href='${path}/member/modify'"> 정보수정</button> 
+			<button onclick="location.href='${path}/member/modify'"> 정보수정</button>
+			<button onclick="removeCheck('${path}', '${member.email}')">탈퇴하기</button> 
 		</td>
 		</tr>
 	</table>
