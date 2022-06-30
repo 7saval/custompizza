@@ -18,25 +18,18 @@ $(()=>{
 	//댓글창 초기화
 	const replyInit = ()=>{
 		//입력된 내용 지우기
-		//document.getElementById('replycontent').value='';
 		$('#replycontent').val('');
 		
 		//댓글추가 div 이동
 		$('#hr').after($('#divReplyAdd'));
-		//const hr = document.getElementById(`hr`);
-		//const divReplyAdd = document.getElementById('divReplyAdd');
-		//hr.after(divReplyAdd);
 		
 		//댓글추가 창 숨기기
-		//divReplyAdd.style.display = 'none';
 		$('#divReplyAdd').hide();
 		
 		//댓글수정 div 이동
 		$('#hr').after($('#divReplyModify'));
-		//const divReplyModify = document.getElementById('divReplyModify');
-		//hr.after(divReplyModify);
+
 		//댓글수정 창 숨기기
-		//divReplyModify.style.display = 'none';
 		$('#divReplyModify').hide();
 		
 	};
@@ -46,11 +39,9 @@ $(()=>{
 		
 		replyInit();//댓글창 초기화
 		
-		//const bnum = document.getElementById('bnum').innerText;
 		//게시물 번호
 		const bnum = $('#bnum').text();
-		//console.log(bnum);
-		//console.log(path);
+
 		//ajax 서버 호출(get)
 		fetch(`${path}/reply/list/${bnum}`)
 		.then(res=>res.json())
@@ -67,38 +58,23 @@ $(()=>{
 		})
 		.catch(console.err);
 		
-		//jquery 비동기방식 서버 호출
-		/*$.ajax({
-			url : `${path}/board/like/${bnum}`,
-			type : 'put',
-			dataType : 'text', //전송받은 데이터 문자열로 
-			success : function(text){
-				alert(text);
-				console.log('리턴값:',text); //좋아요 likecnt
-				$('#likecnt').html(text);
-			},
-			error : function(err){
-				console.log(err);
-			}
-		});*/
-		
 	};
 	
 	replyList(); //댓글의 리스트 출력 함수 호출
 	
 	//게시물의 댓글 버튼을 클릭했을때
 	document.getElementById('replyAddShow').addEventListener('click',()=>{
-		//부모의 restep,relevel
-		document.getElementById('restep').value = 0;
-		document.getElementById('relevel').value = 0;
-		
-		//댓글추가 div 이동
-		const hr = document.getElementById(`hr`);
-		const divReplyAdd = document.getElementById('divReplyAdd');
-		hr.after(divReplyAdd);
-		
-		//댓글추가 div 보이기
-		divReplyAdd.style.display = '';
+			//부모의 restep,relevel
+			document.getElementById('restep').value = 0;
+			document.getElementById('relevel').value = 0;
+			
+			//댓글추가 div 이동
+			const hr = document.getElementById(`hr`);
+			const divReplyAdd = document.getElementById('divReplyAdd');
+			hr.after(divReplyAdd);
+			
+			//댓글추가 div 보이기
+			divReplyAdd.style.display = '';
 		
 	});
 	
@@ -138,17 +114,7 @@ $(()=>{
 		const rnum = e.target.value;
 		console.log(rnum);
 
-		//ajax 서버 호출
-		/*fetch(`${path}/reply/${rnum}`,{
-			method : 'delete',
-		})
-		.then(res=>res.text())
-		.then(text=>{
-			alert(text);
-			replyList(); //댓글 리스트 호출
-		})
-		.catch(err=>console.log(err));*/
-		
+		//ajax 서버 호출		
 		$.ajax({
 			url : `${path}/reply/${rnum}`,
 			type : 'delete',

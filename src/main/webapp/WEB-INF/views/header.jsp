@@ -25,11 +25,12 @@
 		<div class="navbar navbar-light bg-light">
 			<a href="${path}/notice/">공지사항</a>
 			<a href="${path}/order/">주문하기</a>
-			<a href="${path}/order/cart">장바구니<span class="badge badge-light">1</span></a>
+			<a href="${path}/order/cart">장바구니<span class="badge badge-light"></span></a>
 			<a href="${path}/board/">리뷰게시판</a>
 			<a href="${path}/store">찾아오시는길</a>
 		</div>
 	</nav>
 	<hr>
+<span id="sessionOrder" style="display: none">${order.details}</span>
 </body>
 </html>

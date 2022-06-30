@@ -5,9 +5,11 @@
 $(function(){
 	//컨택스트 패스
 	const path = $('#contextPath').val();
-	
+	//세션 이메일
 	const sessionEmail = $('#sessionEmail').text().trim();
-
+	//세션 오더
+	const sessionOrder = $('#sessionOrder').html();
+	console.log(sessionOrder);
 	if(!sessionEmail){ //로그인 전
 		$('#pLogin').show();
 		$('#pLogout').hide();
@@ -27,4 +29,11 @@ $(function(){
 			location.href= `${path}/logout`;
 		}
 	});
+	
+	if(sessionOrder == ''){
+		$('.badge').text('');
+	}else{
+		$('.badge').text('new');
+	}
+	
 });
