@@ -26,13 +26,13 @@
 				<div class="container_pm">	
 			</c:if>
 			<c:if test="${bhcode ne 'first' && option.hcode ne bhcode}"> 
-	 			</div> <!-- 열어준 container 닫기 -->
+	 			</div> 
 				<br>
 				<h4 id="${option.hcode}">${option.hname} 선택</h4>
 				<div class="container_pm">
 	 		</c:if>
 	    	
-	    	<!-- hcode가 전과 같으면 박스만들기 X -->
+	    	
 			<c:if test="${option.hcode eq'h001' || option.hcode eq 'h002' || option.hcode eq 'h003'}">
 	           <div class="box">
 	                 <img alt="${option.lname}" src="${path}/savedir/lowoption/${option.filename}" width="200">
@@ -40,10 +40,10 @@
 	                 <input type ="hidden" name ="details[${status.index}].hname" value="${option.hname}">
 	                 <input type ="hidden" name ="details[${status.index}].lname" value="${option.lname}">
 	                 <input type ="hidden" name ="details[${status.index}].price" value="${option.price}">
-	                 <%-- <input type ="hidden" name ="details[${status.index}].lcode" value="${option.lcode}"> --%>
 	                 
-	                 <input type="radio"  id="essential" name="details[${status.index}].lcode" value="${option.lcode}"  class="${option.hcode}" onclick="selectRadio(event)">
-	                 ${option.lname} (${option.price}원)
+	                 <input type="radio"  id="${option.hcode}_${option.lcode}" name="details[${status.index}].lcode" 
+	                 		value="${option.lcode}"  class="${option.hcode}" onclick="selectRadio(event)">
+	                 <label for="${option.hcode}_${option.lcode}" > ${option.lname} (${option.price}원)</label>
 	            </div>
 			</c:if>	            
 			<c:if test="${option.hcode eq 'h004' || option.hcode eq 'h005' || option.hcode eq 'h006' }">
@@ -53,18 +53,17 @@
 	                 <input type ="hidden" name ="details[${status.index}].hname" value="${option.hname}">
 	                 <input type ="hidden" name ="details[${status.index}].lname" value="${option.lname}">
 	                 <input type ="hidden" name ="details[${status.index}].price" value="${option.price}">
-	                 <%-- <input type ="hidden" name ="details[${status.index}].lcode" valrue="${option.lcode}"> --%>
 	                 
-	                 <input type="checkbox" name="details[${status.index}].lcode" value="${option.lcode}"> ${option.lname} (${option.price}원)
+	                 <input type="checkbox"  id="${option.hcode}_${option.lcode}"  name="details[${status.index}].lcode" value="${option.lcode}">
+	                  <label for="${option.hcode}_${option.lcode}" > ${option.lname} (${option.price}원)</label>
 	            </div>
 
-	     
 			</c:if>	         
 	
 	    	<c:set var="bhcode" value="${option.hcode}"/> <!-- bhcode에 hcode넣기 -->
 	
 		</c:forEach>
-			</div> <!-- 열어준 container 닫기 --> 
+			</div> 
 
 		<hr>
 		<button type="reset">다시선택</button>

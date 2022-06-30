@@ -3,10 +3,7 @@ package com.mycompany.mypizza.dto;
 import java.util.List;
 import java.util.Map;
 
-public class OrderSession {
-	//주문 세션
-
-	
+public class OrderSession { //주문 세션	
 	private Order_master order_master; 	//주문마스터 (정보)
 	private List<Order_detail> details; //피자 디테일
 	public OrderSession() {

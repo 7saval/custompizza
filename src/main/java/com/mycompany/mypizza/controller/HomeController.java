@@ -9,15 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.advice.ErrorCode;
+import com.mycompany.mypizza.dto.OrderSession;
 import com.mycompany.mypizza.service.LoginService;
 import com.mycompany.mypizza.service.NaverService;
 
 @Controller
+@SessionAttributes("order") //세션에 담을 변수
 public class HomeController {
 
 	@Autowired
@@ -46,12 +50,16 @@ public class HomeController {
 	//로그인 버튼 클릭 시
 	@PostMapping("login")
 	public String login(@RequestParam String email, @RequestParam String passwd,
-			RedirectAttributes rattr, HttpSession session) {
+			RedirectAttributes rattr, HttpSession session,
+			OrderSession order,
+			Model model) {
 		ErrorCode errorCode = loginService.loginCheck(email, passwd);
 		rattr.addFlashAttribute("msg", errorCode.getMsg());
 		//성공이면 홈 아니면 login으로 이동
 		if(errorCode.getCode()==0) {//성공
 			session.setAttribute("email", email);
+			model.addAttribute("order",order);	//세션에 객체 할당
+			
 			return "redirect:/";
 		}
 		return "redirect:login";

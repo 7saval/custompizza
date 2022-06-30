@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../include/include.jsp" %> 
+<c:set var="today" value="<%= new java.util.Date() %>"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>장바구니</title>
 <script type="text/javascript">
-	if('${order.details}' == ''){
+	
+	if('${order.details}' ==''){
 		location.href='${path}/order/cart_nosession';
 		
 	}
+
 </script>
+<script type="text/javascript" src="${path}/resources/js/pizzamake.js"></script>
 
 </head>
 <body>
@@ -53,7 +57,7 @@
 	
 	<br>
 	
-	<form action="${path}/order/pay" method="post">
+	<form action="${path}/order/pay" method="post" id='Frmorder_master'>
 		<table>
 			<tr>
 				<th>매장선택</th>
@@ -74,8 +78,8 @@
 			</tr>
 			<tr>
 				<td>
-					<fmt:formatDate value="<%= new java.util.Date() %>" pattern="yyyy-MM-dd"/> 
-					<input type="time"  min="11:00" min="<%= new java.util.Date() %>" max="20:00"  step="600" name="order_master.receipt_time">
+					<fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/> 
+					<input type="time"  min="11:00" max="20:00"  step="600" name="order_master.receipt_time" id="receipt_time">
 				</td>
 			</tr>
 			<tr>
@@ -89,9 +93,12 @@
 			</tr>
 			<tr>
 				<td>
-					<input type="radio" name="order_master.payment" value="0"> 현금 <br>
-					<input type="radio" name="order_master.payment" value="1"> 카드 <br>
-					<input type="radio" name="order_master.payment" value="2"> 네이버페이 <br>
+					<input type="radio" name="order_master.payment" value="0" id="pay0">
+					<label for="pay0">현금</label><br>
+					<input type="radio" name="order_master.payment" value="1" id="pay1"> 
+					<label for="pay1">카드</label><br>
+					<input type="radio" name="order_master.payment" value="2" id="pay2"> 
+					<label for="pay2">네이버페이</label><br>
 				</td>
 			</tr>
 		</table>

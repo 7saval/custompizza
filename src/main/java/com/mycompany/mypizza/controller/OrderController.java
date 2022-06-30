@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.dto.Lowoption;
@@ -50,7 +51,6 @@ public class OrderController {
 	public String pizzamake(@ModelAttribute("order")OrderSession order, Model model) {
 		/* System.out.println(order); */
 
-
 		//ordersession에 details(List<Order_detail>)담고 cart로 이동
 		return "/order/cart";
 	}
@@ -59,8 +59,6 @@ public class OrderController {
 	//cart view (장바구니 화면)으로 들어가기
 	@GetMapping("cart")
 	public String gocart(@ModelAttribute("order")OrderSession order, Model model) {
-		//model.addAttribute("order",order);	//세션에 객체 할당
-		
 		return "/order/cart";
 	}
 	
@@ -68,7 +66,7 @@ public class OrderController {
 	//cart view에서 <결제> 버튼 눌렀을때
 	@PostMapping("pay")
 	public String cart(@ModelAttribute("order")OrderSession order, HttpSession session, 
-			RedirectAttributes rattr) {
+			RedirectAttributes rattr, Model model) {
 		String email = (String) session.getAttribute("email");
 		//order(session)에 email 세팅
 		Order_master order_master = order.getOrder_master();
@@ -76,9 +74,12 @@ public class OrderController {
 		order.setOrder_master(order_master);
 
 		orderService.insert_order(order);  //db에 저장
-		
+	
 		rattr.addAttribute("order_no", order.getOrder_master().getOrder_no());
-
+		
+		order.setDetails(null);
+		order.setOrder_master(null);
+		
 		return "redirect:payinfo"; //payinfo 호출
 	}
 
@@ -90,6 +91,7 @@ public class OrderController {
 		model.addAttribute("master",master);
 		model.addAttribute("dlist", dlist);
 		
+		
 		return "/order/payinfo";
 	}
 	
@@ -99,7 +101,5 @@ public class OrderController {
 	public void cart_nosession() {
 	}
 	
-	
-
 
 }
