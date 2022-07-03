@@ -6,10 +6,21 @@
 <meta charset="UTF-8">
 <title>커스텀피자</title>
 <script type="text/javascript" src="${path}/resources/js/header.js"></script>
+<style type="text/css">
+@font-face {
+    font-family: 'Vitro_core';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+    h2 {color:red; font-family:'Vitro_core';}
+    h4 {font-family:'Vitro_core';}
+
+</style>
 </head>
 <body>
 	<header class="d-flex justify-content-between">
-		<h2> <a href="${path}">CUSTOM PIZZA</a></h2>
+		<a href="${path}"><img alt="" src="${path}/resources/images/logo.png" width="300"></a>
 		<div>
 			<!-- 컨택스트패스 -->
 			<input type="hidden" value="${path}" id="contextPath">
@@ -31,6 +42,7 @@
 		</div>
 	</nav>
 	<hr>
+	
 <span id="sessionOrder" style="display: none">${order.details}</span>
 </body>
 </html>

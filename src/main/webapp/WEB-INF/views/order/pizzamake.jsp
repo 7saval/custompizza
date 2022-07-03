@@ -9,6 +9,7 @@
 <title>피자만들기</title>
 <script type="text/javascript" src="${path}/resources/js/pizzamake.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/order.css">
+
 </head>
 <body >
 <div class="container">
