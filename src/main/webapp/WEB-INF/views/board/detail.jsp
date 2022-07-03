@@ -45,62 +45,67 @@
 	<div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>상세조회</h2>
-	<table border="1">
-		<tr>
-			<th>NO</th>
-			<td id="bnum">${board.bnum}</td>
-		</tr>
-		<tr>
-			<th>작성자</th>
-			<td>${board.email}</td>
-		</tr>
-		<tr>
-			<th>제목</th>
-			<td>${board.subject}</td>
-		</tr>
-		<tr>
-			<th>내용</th>
-			<td> <textarea rows="5" cols="25" readonly="readonly">${board.content}</textarea></td>
-		</tr>
-		<tr>
-			<th>파일</th>
-			<td>
-				<c:forEach var="boardfile" items="${bflist}">
-					<img alt="" src="${path}/savedir/${boardfile.filename}" width="300">
-				</c:forEach>
-			</td>
-		</tr>
-		<tr>
-			<th>등록일자</th>
-			<td><fmt:formatDate value="${board.regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-		</tr>
-		<tr>
-			<th>수정일자</th>
-			<td><fmt:formatDate value="${board.modidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
-		</tr>
-		<tr>
-			<th>조회수</th>
-			<td>${board.readcnt}</td>
-		</tr>
-		<tr>
-			<!-- 좋아요 -->
-			<th><i class="fas fa-thumbs-up" id="like"></i></th>
-			<td id="likecnt">${board.likecnt}</td>
-		</tr>	
-		<tr>
-			<!-- 싫어요 -->
-			<th><i class="fas fa-thumbs-down" id="dislike"></i></th>
-			<td id="dislikecnt">${board.dislikecnt}</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정하기</button>
-				<button id="replyAddShow">댓글</button>
-				<button onclick="removeCheck('${path}', ${board.bnum})">삭제하기</button>
-				<button onclick="location.href='${path}/board/list'">리스트</button>
-			</td>
-		</tr>
-	</table>
+		<table border="1" class="table">
+			<tr>
+				<th scope="row" class="w-10 table-danger">NO</th>
+				<td id="bnum" class="w-90">${board.bnum}</td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">작성자</th>
+				<td>${board.email}</td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">제목</th>
+				<td>${board.subject}</td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">내용</th>
+				<td> 
+					<div class="form-group">
+						<textarea class="form-control" rows="5" readonly="readonly">${board.content}</textarea>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">파일</th>
+				<td>
+					<c:forEach var="boardfile" items="${bflist}">
+						<img alt="" src="${path}/savedir/${boardfile.filename}" width="300">
+					</c:forEach>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">등록일자</th>
+				<td><fmt:formatDate value="${board.regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">수정일자</th>
+				<td><fmt:formatDate value="${board.modidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
+			</tr>
+			<tr>
+				<th scope="row" class="table-danger">조회수</th>
+				<td scope="row">${board.readcnt}</td>
+			</tr>
+			<tr>
+				<!-- 좋아요 -->
+				<th scope="row" class="table-danger"><i class="fas fa-thumbs-up" id="like"></i></th>
+				<td id="likecnt">${board.likecnt}</td>
+			</tr>	
+			<tr>
+				<!-- 싫어요 -->
+				<th scope="row" class="table-danger"><i class="fas fa-thumbs-down" id="dislike"></i></th>
+				<td id="dislikecnt">${board.dislikecnt}</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정하기</button>
+					<button id="replyAddShow">댓글</button>
+					<button onclick="removeCheck('${path}', ${board.bnum})">삭제하기</button>
+					<button onclick="location.href='${path}/board/list'">리스트</button>
+				</td>
+			</tr>
+		</table>
+	
 	<hr id="hr">
 	
 	<!-- 댓글추가 -->

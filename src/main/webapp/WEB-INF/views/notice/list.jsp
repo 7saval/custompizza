@@ -12,36 +12,31 @@
 <div class="container">
 	<%@ include file="../header.jsp" %>
 	<h2>공지사항</h2>
-	<%-- <form action="${path}/notice/list">
-		<select name="findkey">
-			<option value="subject" <c:out value="${page.findkey=='subject'?'selected':''}"/>>제목</option>
-			<option value="content" <c:out value="${page.findkey=='content'?'selected':''}"/>>내용</option>
-			<option value="subcon" <c:out value="${page.findkey=='subcon'?'selected':''}"/>>제목+내용</option>
-		</select>
-		<input type="text" name="findvalue" value="${page.findvalue}">
-		<button>조회</button>
-	</form> --%>
-	<table border="1">
-		<tr>
-		    <th>공지번호</th>
-			<th>공지제목</th>
-			<th>공지조회수</th>
-			<th>공지등록일</th>
-			<th>공지수정일</th>
-		</tr>
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+			    <th scope="col">공지번호</th>
+				<th scope="col">공지제목</th>
+				<th scope="col">공지조회수</th>
+				<th scope="col">공지등록일</th>
+				<th scope="col">공지수정일</th>
+			</tr>
+		</thead>
+		<tbody>
 		<c:forEach var="notice" items="${nlist}">
 			<tr>
-				<td>${notice.n_num}</td>
+				<td scope="row">${notice.n_num}</td>
 				<td><a href="${path}/notice/detail?n_num=${notice.n_num}">${notice.n_subject}</a></td>
 				<td>${notice.n_readcnt}</td>
 				<td><fmt:formatDate value="${notice.n_regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 				<td><fmt:formatDate value="${notice.n_modidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </td>
 			</tr>
 		</c:forEach>
+		</tbody>
 	
 	</table>
 	<%-- ${page} --%>
-	<button onclick="location.href='${path}/notice/add'">공지쓰기</button>
+	<button class="btn btn-dark" onclick="location.href='${path}/notice/add'">공지쓰기</button>
 	<hr>
 
 	<!-- 컨텍스트path뒤에 board가 notice로 바뀌어야하지 않나싶음. -->
