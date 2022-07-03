@@ -32,9 +32,9 @@
 				<span style = "display:none;" id="relevel{{rnum}}">{{relevel}}</span> <br>
 				이메일 : <span>{{email}}</span> <br>
 				내용 : <pre id='content{{rnum}}'>{{content}}</pre> <br>
-				<button class="reReplyAddShow" value="{{rnum}}">댓글</button>
-				<button class="reReplyModify" value="{{rnum}}">수정</button>
-				<button class="reReplyRemove" value="{{rnum}}">삭제</button>
+				<button class="reReplyAddShow btn btn-dark" value="{{rnum}}">댓글</button>
+				<button class="reReplyModify btn btn-dark" value="{{rnum}}">수정</button>
+				<button class="reReplyRemove btn btn-dark" value="{{rnum}}">삭제</button>
 			</div>
 		</div>
 		<hr>
@@ -97,11 +97,11 @@
 				<td id="dislikecnt">${board.dislikecnt}</td>
 			</tr>
 			<tr>
-				<td colspan="2">
-					<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정하기</button>
-					<button id="replyAddShow">댓글</button>
-					<button onclick="removeCheck('${path}', ${board.bnum})">삭제하기</button>
-					<button onclick="location.href='${path}/board/list'">리스트</button>
+				<td colspan="2" align="right">
+					<button class="btn btn-dark" onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정하기</button>
+					<button class="btn btn-dark" id="replyAddShow">댓글</button>
+					<button class="btn btn-dark" onclick="removeCheck('${path}', ${board.bnum})">삭제하기</button>
+					<button class="btn btn-dark" onclick="location.href='${path}/board/list'">리스트</button>
 				</td>
 			</tr>
 		</table>

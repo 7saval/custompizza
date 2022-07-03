@@ -12,7 +12,7 @@
 <script>
 	$(function(){
 		$('#mapAdd').click(function(){
-			const storeMap = $('.storeMap').val();			
+			const storeMap = $('#storeMap').val();			
 			switch(storeMap){
 			case "1" :
 				//강남점
@@ -57,13 +57,21 @@
 <div class="container">
 	<%@ include file="header.jsp" %>
 	<h2>매장 찾기</h2>
-		<label>매장명</label>
-			<select class="storeMap" name="storeMap" id="storeMap" style="width: 300px; height: 22px">
-				<option value="선택">선택</option>
-				<option value="1">강남점</option>
-				<option value="2">신림점</option>
-			</select>
-		<button id="mapAdd">검색</button>
+		<h4>매장명</h4>
+		<div class="row">
+			<div class="form-group">
+				<select class="custom-select" name="storeMap" id="storeMap" style="width: 150px; height: 40px">
+					<option value="선택">선택</option>
+					<option value="1">강남점</option>
+					<option value="2">신림점</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<div class="input-group-append">
+					<button id="mapAdd" class="btn btn-danger">검색</button>
+				</div>
+			</div>
+		</div>
 	<hr>
 	<div class="mapbox" id="map" style="width:60%;height:400px;border:1px;float:left;"></div>
 	<div class="mapdetail" id="mapdetail" style="width:40%;height:400px;border:1px;float:right;display: inline-block;"></div>

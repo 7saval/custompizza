@@ -22,8 +22,6 @@
 	<div id="goOrder"  OnClick="location.href ='${path}/order/'"> 
 		<br>주문하러 가기 <br><br>
 	</div>
-	</hr>
-	
 	
 	
 </div>
