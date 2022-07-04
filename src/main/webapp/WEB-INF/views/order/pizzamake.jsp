@@ -67,8 +67,8 @@
 			</div> 
 
 		<hr>
-		<button type="reset">다시선택</button>
-		<button onclick="orderCheck(event)" >주문하기</button>
+		<button class="btn btn-dark" type="reset">다시선택</button>
+		<button class="btn btn-dark" onclick="orderCheck(event)" >주문하기</button>
 	</form>
 
 </div>

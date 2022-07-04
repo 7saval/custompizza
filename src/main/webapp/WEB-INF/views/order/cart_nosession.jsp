@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="../include/include.jsp" %> 
+<%@ include file="../include/include.jsp" %>
+<%@ include file="../include/sessionCheck.jsp" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +23,6 @@
 	<div id="goOrder"  OnClick="location.href ='${path}/order/'"> 
 		<br>주문하러 가기 <br><br>
 	</div>
-	</hr>
-	
 	
 	
 </div>

@@ -14,35 +14,35 @@
 	<h2>회원정보</h2>
 	<%-- ${member} --%>
 	
-	<table border="1">
+	<table border="1" class="table">
 		<tr>
-			<th>이메일</th>
-			<td>${member.email}</td>
+			<th scope="row" class="w-10 table-danger" >이메일</th>
+			<td class="w-90">${member.email}</td>
 		</tr>
 		<tr>
-			<th>이름</th>
+			<th scope="row" class="table-danger">이름</th>
 			<td>${member.username}</td>
 		</tr>
 		<tr>
-			<th>휴대전화</th>
+			<th scope="row" class="table-danger">휴대전화</th>
 			<td>${member.mobile}</td>
 		</tr>
 		<tr>
-			<th>우편번호</th>
+			<th scope="row" class="table-danger">우편번호</th>
 			<td>${member.zipcode}</td>
 		</tr>
 		<tr>
-			<th>도로명주소</th>
+			<th scope="row" class="table-danger">도로명주소</th>
 			<td>${member.addrload}</td>
 		</tr>
 		<tr>
-			<th>상세주소</th>
+			<th scope="row" class="table-danger">상세주소</th>
 			<td>${member.addrdetail}</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-			<button onclick="location.href='${path}/member/modify'"> 정보수정</button>
-			<button onclick="removeCheck('${path}', '${member.email}')">탈퇴하기</button> 
+			<button class="btn btn-dark" onclick="location.href='${path}/member/modify'"> 정보수정</button>
+			<button class="btn btn-dark" onclick="removeCheck('${path}', '${member.email}')">탈퇴하기</button> 
 		</td>
 		</tr>
 	</table>

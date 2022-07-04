@@ -15,39 +15,46 @@
 	<%@ include file="../header.jsp" %>
 	<h2>리뷰 추가</h2>
 	<form action="${path}/board/add" method="post" enctype="multipart/form-data">
-		<table>
+		<table border="1" class="table">
 			<tr>
-				<th>이메일</th>
-				<td><input type="text" name="email" value="${sessionScope.email}" readonly> </td>
+				<th scope="row" class="table-danger">이메일</th>
+				<td>
+					<div class="form-group">
+						<input class="form-control" type="text" name="email" value="${sessionScope.email}" readonly> 
+					</div>
+				</td>
 			</tr>
 			<tr>
-				<th>제목</th>
-				<td><input type="text" name="subject"></td>
+				<th scope="row" class="table-danger">제목</th>
+				<td>
+					<div class="form-group">
+						<input class="form-control" type="text" name="subject">
+					</div>
+				</td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td> <textarea name="content" rows="5" cols="25"></textarea>   </td>
+				<th scope="row" class="table-danger">내용</th>
+				<td> 
+					<div class="form-group">
+						<textarea class="form-control" name="content" rows="5" cols="25"></textarea>
+					</div>
+				</td>
 			</tr>
-			
 			<tr>
-				<th>사진첨부 <br><button onclick="fileAdd(event)">+</button></th>
+				<th scope="row" class="table-danger">사진첨부 <br><button onclick="fileAdd(event)">+</button></th>
 				<td>
 					<div id="divFiles">
 						<input type="file" name="files"> <br>
 					</div>
-					
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button>저장</button>
-					<button type="reset">취소</button>
+					<button class="btn btn-dark">저장</button>
+					<button class="btn btn-dark" type="reset">취소</button>
 				</td>
-			</tr>
-			
-			
-		</table>
-	
+			</tr>		
+		</table>	
 	</form>
 </div>
 <%@ include file="../footer.jsp" %>

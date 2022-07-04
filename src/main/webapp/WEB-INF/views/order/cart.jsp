@@ -106,7 +106,7 @@
 		<input type="hidden" name="order_master.price" value="${price_sum}">
 	
 		<hr>
-		<button onclick="paycheck(event)">결제하기</button>
+		<button class="btn btn-dark" onclick="paycheck(event)">결제하기</button>
 	</form>
 	</div>
 	<%@ include file="../footer.jsp" %>
