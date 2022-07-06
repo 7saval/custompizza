@@ -29,7 +29,9 @@ public class NaverServiceImpl implements NaverService {
 	
 	//네이버 콜백 url
 	String naverRedirectUrl = "http://localhost:8081";
-	
+	//실서버용
+	//String naverRedirectUrl = "http://101.101.216.222:8080";
+		
 	//네이버 로그인
 	@Override
 	public ErrorCode naverLogin(String code, String state, String path, HttpSession session) throws Exception {

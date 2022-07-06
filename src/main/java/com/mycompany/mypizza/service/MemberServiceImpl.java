@@ -83,8 +83,11 @@ public class MemberServiceImpl implements MemberService {
 		// 보낼 이메일 내용
 		StringBuffer content = new StringBuffer();
 		content.append(email + "님 반갑습니다. 아래링크를 클릭해 주세요<br> ");
-		content.append("<a href='http://localhost:8081" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
-				+ email + "'>이메일인증확인</a>");
+		//로컬접속용
+//		content.append("<a href='http://localhost:8081" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
+//				+ email + "'>이메일인증확인</a>");
+		//실서버용
+		content.append("<a href='http://101.101.216.222:8080"+path+"/member/emailConfirm?authcode="+authCode+"&email="+email+"'>이메일 인증 확인</a>");
 
 		// 보낼메일 메시지 객체 생성
 		MimeMessage message = mailSender.createMimeMessage();

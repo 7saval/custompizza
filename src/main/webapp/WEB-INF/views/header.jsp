@@ -20,7 +20,7 @@
 </head>
 <body>
 	<header class="d-flex justify-content-between">
-		<a href="${path}"><img alt="" src="${path}/resources/images/logo.png" width="300"></a>
+		<a href="${path}/home"><img alt="" src="${path}/resources/images/logo.png" width="300"></a>
 		<div>
 			<!-- 컨택스트패스 -->
 			<input type="hidden" value="${path}" id="contextPath">
