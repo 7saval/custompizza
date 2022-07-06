@@ -28,7 +28,8 @@ public class NaverServiceImpl implements NaverService {
 	private MemberRepository memberRepository;
 	
 	//네이버 콜백 url
-	String naverRedirectUrl = "http://localhost:8081";
+//	String naverRedirectUrl = "http://localhost:8081";
+	String naverRedirectUrl = "http://118.67.131.101:8080"; //실서버용
 	
 	//네이버 로그인
 	@Override
@@ -67,7 +68,7 @@ public class NaverServiceImpl implements NaverService {
 		//네이버 로그인을 위한 apiUrl과 state값 리턴
 		Map<String, String> rmap = new HashMap<>();
 		
-		String clientId = "1QumgAlSebiRzKuEJKIl";//애플리케이션 클라이언트 아이디값";
+		String clientId = "RqdQl857bohpIHc10vAA";//애플리케이션 클라이언트 아이디값";
 	    String redirectURI = URLEncoder.encode(naverRedirectUrl+path+"/naverCallback", "UTF-8");
 	    SecureRandom random = new SecureRandom();
 	    String state = new BigInteger(130, random).toString();
@@ -87,8 +88,8 @@ public class NaverServiceImpl implements NaverService {
 	private String getAccessToken(String code, String state, String path) throws Exception {
 		//accessToken변환
 		//토큰 가져오기
-		String clientId = "1QumgAlSebiRzKuEJKIl";
-		String clientSecret = "7nJKEdKqJ4";
+		String clientId = "RqdQl857bohpIHc10vAA";
+		String clientSecret = "bu2R9ySE62";
 		String access_token = "";
 		
 		String redirectURI = URLEncoder.encode(naverRedirectUrl+path+"/naverCallback", "UTF-8");

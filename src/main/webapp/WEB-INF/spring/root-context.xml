@@ -37,7 +37,7 @@
 	<!-- 파일저장경로 -->
 	<!-- new String("C:/javaprogramming/savedir"); -->
 	<bean id="savedir" class="java.lang.String">
-		<constructor-arg value="C:/javaprogramming/savedir"/>
+		<constructor-arg value="C:/Users/leejh/Desktop/JAVA/savedir/"/>
 	</bean>
 	
 	<!-- 암호화 객체 -->

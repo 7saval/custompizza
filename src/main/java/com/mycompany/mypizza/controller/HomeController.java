@@ -38,27 +38,27 @@ public class HomeController {
 	
 	//로그인 폼으로 이동
 	@GetMapping("login")
-	public void login(HttpSession session,HttpServletRequest request, Model model) throws Exception {
+	public void login(HttpSession session,HttpServletRequest request,OrderSession order,  Model model) throws Exception {
 		//네이버 간편 가입 위해서 apiURL(네이버로그인 위해 이동할 주소) 얻기
 		Map<String, String> rmap = naverService.getApiUrl(request.getContextPath());
 		//세션에 state넣기(callback메소드에서 인증하기 위해서)
 		session.setAttribute("state", rmap.get("state"));
 		//jsp에 보내기
 		model.addAttribute("apiURL", rmap.get("apiURL"));
+		
+		model.addAttribute("order", order); //세션에 객체 할당
 	}
 	
 	//로그인 버튼 클릭 시
 	@PostMapping("login")
 	public String login(@RequestParam String email, @RequestParam String passwd,
-			RedirectAttributes rattr, HttpSession session,
-			OrderSession order, 
-			Model model) {
+			RedirectAttributes rattr, HttpSession session) {
 		ErrorCode errorCode = loginService.loginCheck(email, passwd);
 		rattr.addFlashAttribute("msg", errorCode.getMsg());
 		//성공이면 홈 아니면 login으로 이동
 		if(errorCode.getCode()==0) {//성공
 			session.setAttribute("email", email);
-			model.addAttribute("order", order); //세션에 객체 할당
+			
 			return "redirect:/";
 		}
 		return "redirect:login";

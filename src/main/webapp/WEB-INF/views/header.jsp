@@ -6,6 +6,17 @@
 <meta charset="UTF-8">
 <title>커스텀피자</title>
 <script type="text/javascript" src="${path}/resources/js/header.js"></script>
+<script type="text/javascript">
+	function sessionCheck(e){
+		e.preventDefault();
+		if('${order.details}' ==''){
+			location.href='${path}/order/cart_nosession';
+		}else {
+			location.href='${path}/order/cart';
+		}	
+	}
+
+</script>
 <style type="text/css">
 @font-face {
     font-family: 'Vitro_core';
@@ -36,7 +47,7 @@
 		<div class="navbar navbar-dark bg-dark">
 			<a href="${path}/notice/" class="text-light font-weight-bold">공지사항</a>
 			<a href="${path}/order/" class="text-light font-weight-bold">주문하기</a>
-			<a href="${path}/order/cart" class="text-light font-weight-bold">장바구니<span class="badge badge-light"></span></a>
+			<a href="${path}/order/cart" class="text-light font-weight-bold" onclick="sessionCheck(event)">장바구니<span class="badge badge-light"></span></a>
 			<a href="${path}/board/" class="text-light font-weight-bold">리뷰게시판</a>
 			<a href="${path}/store" class="text-light font-weight-bold">찾아오시는길</a>
 		</div>
