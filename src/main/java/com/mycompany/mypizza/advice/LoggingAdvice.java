@@ -38,7 +38,7 @@ public class LoggingAdvice {
 	}
 	
 	//메소드 실행 소요시간 체크
-	//@Around("execution(* com.company.mypizza.service.BoardServiceImpl.insert(..))")
+	//@Around("execution(* com.mycompany.mypizza.service.BoardServiceImpl.insert(..))")
 	public Object aroundLog(ProceedingJoinPoint pjp) throws Throwable {
 		//시작시간
 		long startTime = System.currentTimeMillis(); //시스템의 시간을 1/000초 단위로 반환

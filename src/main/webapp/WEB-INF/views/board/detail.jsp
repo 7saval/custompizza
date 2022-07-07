@@ -98,9 +98,11 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
+				<c:if test="${sessionScope.email == board.email}">
 					<button class="btn btn-dark" onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정하기</button>
-					<button class="btn btn-dark" id="replyAddShow">댓글</button>
 					<button class="btn btn-dark" onclick="removeCheck('${path}', ${board.bnum})">삭제하기</button>
+				</c:if>
+					<button class="btn btn-dark" id="replyAddShow">댓글</button>
 					<button class="btn btn-dark" onclick="location.href='${path}/board/list'">리스트</button>
 				</td>
 			</tr>
