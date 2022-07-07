@@ -19,7 +19,7 @@ public class LoggingAdvice {
 	//execution : 반환형 패키지명.클래스명.메소드명(매개변수)
 	
 	//포인트컷 작성
-	@Before("execution(* com.company.mypizza.controller.*.*(..))")
+	@Before("execution(* com.mycompany.mypizza.controller.*.*(..))")
 	public void beforeLog(JoinPoint jp) {
 		System.out.println("매개변수: "+jp.getSignature().toShortString() 
 				+ Arrays.toString(jp.getArgs()));
@@ -27,7 +27,7 @@ public class LoggingAdvice {
 	
 	//리턴값 출력
 	// Object obj : 리턴 오브젝트
-	@AfterReturning(pointcut="execution(* com.company.mypizza.service.*.*(..))", returning = "obj")
+	@AfterReturning(pointcut="execution(* com.mycompany.mypizza.service.*.*(..))", returning = "obj")
 	public void afterLog(JoinPoint jp, Object obj) {
 		if(obj != null) {
 			System.out.println("----------------------------------------------");
@@ -38,7 +38,7 @@ public class LoggingAdvice {
 	}
 	
 	//메소드 실행 소요시간 체크
-	//@Around("execution(* com.company.mypizza.service.BoardServiceImpl.insert(..))")
+	//@Around("execution(* com.mycompany.mypizza.service.BoardServiceImpl.insert(..))")
 	public Object aroundLog(ProceedingJoinPoint pjp) throws Throwable {
 		//시작시간
 		long startTime = System.currentTimeMillis(); //시스템의 시간을 1/000초 단위로 반환

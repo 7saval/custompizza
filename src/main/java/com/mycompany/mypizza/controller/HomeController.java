@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.advice.ErrorCode;
@@ -30,6 +31,13 @@ public class HomeController {
 	@Autowired
 	private LoginService loginService;
 	
+	//세션을 생성
+//	@GetMapping("/")
+//	public String home(OrderSession order, Model model) {
+//		model.addAttribute("order", order); //세션에 객체 할당
+//		return "redirect:home";
+//	}
+
 	//홈으로 이동
 	@GetMapping("/")
 	public String home() {
@@ -58,7 +66,7 @@ public class HomeController {
 		//성공이면 홈 아니면 login으로 이동
 		if(errorCode.getCode()==0) {//성공
 			session.setAttribute("email", email);
-			
+
 			return "redirect:/";
 		}
 		return "redirect:login";
@@ -66,10 +74,14 @@ public class HomeController {
 	
 	//로그아웃
 	@GetMapping("logout")
-	public String logout(@ModelAttribute("order") OrderSession order, HttpSession session, RedirectAttributes rattr) {
+	public String logout(HttpSession session, RedirectAttributes rattr, SessionStatus sessionStatus) {
 		//오더세션 지우기
-		order.setDetails(null);
-		order.setOrder_master(null);
+//		order.setDetails(null);
+//		order.setOrder_master(null);
+		
+		//로그아웃 시 장바구니 지울 때
+		//sessionStatus.setComplete();
+
 		//세션지우기
 		session.invalidate();
 		return "redirect:login";
@@ -103,7 +115,7 @@ public class HomeController {
 			return "redirect:login";
 		}
 		
-	}
+	}		
 	
 	//아이디찾기 폼 이동
 	@GetMapping("findId")

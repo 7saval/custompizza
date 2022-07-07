@@ -153,12 +153,6 @@ $(()=>{
 		const restep = $('#restep').val(); // 댓글의 순서
 		const relevel = $('#relevel').val(); // 댓글의 레벨
 		
-		console.log(bnum);
-		console.log(email);
-		console.log(content);
-		console.log(restep);
-		console.log(relevel);
-		
 		//전송할 데이터(자바스트립트 객체)
 		const data ={
 			bnum,

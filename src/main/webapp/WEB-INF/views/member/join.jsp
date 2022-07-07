@@ -84,7 +84,6 @@
 			<tr>
 				<td colspan="2" align="center">
 					<button  class="btn btn-dark" onclick="joinCheck(event)">회원가입</button> 
-				
 				</td>
 			</tr>	
 		</table>

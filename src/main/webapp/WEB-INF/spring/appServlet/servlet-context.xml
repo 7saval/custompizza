@@ -25,6 +25,7 @@
 	<resources mapping="/savedir/**" location="file:///C:/Users/leejh/Desktop/JAVA/savedir/" />
 	<!-- 파일저장경로 (리눅스) -->
 	<!-- <resources mapping="/savedir/**" location="file:///var/lib/tomcat9/webapps/savedir/"/> -->
+
 	
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
