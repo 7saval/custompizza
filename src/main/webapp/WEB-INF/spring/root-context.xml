@@ -39,6 +39,11 @@
 	<bean id="savedir" class="java.lang.String">
 		<constructor-arg value="C:/Users/leejh/Desktop/JAVA/savedir/"/>
 	</bean>
+<!-- 	<bean id="savedir" class="java.lang.String">
+		<constructor-arg value="var/lib/tomcat9/webapps/savedir/"/>
+	</bean>
+	 -->
+	
 	
 	<!-- 암호화 객체 -->
 	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">

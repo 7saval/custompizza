@@ -28,8 +28,8 @@ public class NaverServiceImpl implements NaverService {
 	private MemberRepository memberRepository;
 	
 	//네이버 콜백 url
-//	String naverRedirectUrl = "http://localhost:8081";
-	String naverRedirectUrl = "http://118.67.131.101:8080"; //실서버용
+	String naverRedirectUrl = "http://localhost:8081";
+//	String naverRedirectUrl = "http://118.67.131.101:8080"; //실서버용
 	
 	//네이버 로그인
 	@Override

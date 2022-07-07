@@ -27,22 +27,15 @@ public class NoticeServiceImpl implements NoticeService {
 		int perPage = page.getPerPage(); //한페이지당 게시물수
 		int perBlock = page.getPerBlock(); //페이지 블럭의 수
 		
-		//1)게시물의 시작번호(mysql은 시작번호 0번 부터)
-		//오라클은 + 1
+	
 		int startNum = (curPage-1) * perPage;
-		//2)게시물의 끝번호
 		int endNum = startNum + perPage -1;
-		
-		//3)전체페이지수
 		int totalCnt = noticeRepository.selectTotalCnt(page); //전체게시물수
 		int totPage = totalCnt/perPage;
-		if (totalCnt%perPage!=0) totPage++; //나머지가 있으면 +1
-		
-		//4)페이지블럭의 시작페이지
+		if (totalCnt%perPage!=0) totPage++; 
 		int startPage= curPage - ((curPage-1)%perBlock);
-		//5)페이지블럭의 끝페이지
 		int endPage = startPage + perBlock - 1;
-		if (endPage>totPage) endPage=totPage; //endPage는 totPage보다 작거나 같아야 한다
+		if (endPage>totPage) endPage=totPage;
 
 		
 		//page 세팅
