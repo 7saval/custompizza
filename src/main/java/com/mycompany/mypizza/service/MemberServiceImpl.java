@@ -41,7 +41,7 @@ public class MemberServiceImpl implements MemberService {
 	private JavaMailSender mailSender;
 
 	@Override
-	@Transactional // 트랜잭션을 메소드단위로 제어(commit, rollback을 스프링이 관리)
+	@Transactional 
 	public ErrorCode insert(Member member, HttpSession session, String path) throws Exception {
 
 		// 1)중복이메일 체크
@@ -84,10 +84,10 @@ public class MemberServiceImpl implements MemberService {
 		StringBuffer content = new StringBuffer();
 		content.append(email + "님 반갑습니다. 아래링크를 클릭해 주세요<br> ");
 
-		content.append("<a href='http://localhost:8081" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
-				+ email + "'>이메일인증확인</a>");
-//		content.append("<a href='http://118.67.131.101:8080" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
-//				+ email + "'>이메일인증확인</a>");	//실서버용
+//		content.append("<a href='http://localhost:8081" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
+//				+ email + "'>이메일인증확인</a>"); 
+		content.append("<a href='http://118.67.131.101:8080" + path + "/member/emailConfirm?authCode=" + authCode + "&email="
+				+ email + "'>이메일인증확인</a>");	//실서버용
 
 		// 보낼메일 메시지 객체 생성
 		MimeMessage message = mailSender.createMimeMessage();

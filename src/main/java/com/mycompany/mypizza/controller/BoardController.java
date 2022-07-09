@@ -38,9 +38,9 @@ public class BoardController {
 	private BoardFileService boardFileService;
 
 	@GetMapping("/")
-	public String listhome(Page page, Model model, RedirectAttributes rattr) { //2)page객체 생성
-		//세션에 객체를 할당하기 위한 목적(@SessionAttributes이 존재시 session생성)
-		model.addAttribute("page", page); //3)세션에 할당
+	public String listhome(Page page, Model model, RedirectAttributes rattr) { 
+
+		model.addAttribute("page", page); 
 		// redirect방식 controller를 재호출
 		return "redirect:/board/list";
 		
@@ -49,9 +49,8 @@ public class BoardController {
 	@GetMapping("list")
 	public void list(@ModelAttribute("page") Page page, Model model) {
 		model.addAttribute("blist", boardService.selectList(page));
-		//@ModelAttribute :뷰까지 전달
+
 		//model.addAttribute("page", page); //서비스에서 page 계산
-		// WEB-INF/views/board/list.jsp로 이동
 		
 	}
 
@@ -96,7 +95,6 @@ public class BoardController {
 	}
 	
 	//수정버튼을 클릭했을때 
-	//required = false :데이터가 없을때도 있다
 	@PostMapping("modify")
 	public String modify(Board board, 
 			@RequestParam(required = false) List<Integer> removeFiles,
@@ -106,7 +104,6 @@ public class BoardController {
 		
 		ErrorCode errorCode = boardService.update(board, removeFiles);
 		
-		//redirect방식, detail로 이동
 		rattr.addFlashAttribute("msg", errorCode.getMsg()); //한번만 실행 파라메터
 		rattr.addAttribute("bnum", board.getBnum()); //url에 포함
 		
@@ -128,7 +125,7 @@ public class BoardController {
 	public String likecnt(@PathVariable int bnum) {
 		boardService.updateLikeCnt(bnum);
 		Board board = boardService.selectOne(bnum);
-		//좋아요를 문자로 변경후 리턴
+
 		return String.valueOf(board.getLikecnt());
 	}
 	

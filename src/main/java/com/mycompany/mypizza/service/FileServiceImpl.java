@@ -24,16 +24,13 @@ public class FileServiceImpl implements FileService {
 	
 	@Override
 	public String fileUpload(MultipartFile file) throws Exception {
-	//public String fileUpload(MultipartFile file) throws Exception {
-			
-		//파일을 업로드 하고 파일명을 리턴
+
 		String originFileName =file.getOriginalFilename();
-		if (originFileName.equals("")) return ""; //파일이름이 없다면
-		//파일이름이 겹치지 않도록 시스템날짜를 붙이기
+		if (originFileName.equals("")) return "";
 		String filename = System.currentTimeMillis() + "_"+ originFileName;
 		
 		//저장할 디렉토리 생성 
-		if (!(new File(savedir).isDirectory())) { //경로명이 없다면
+		if (!(new File(savedir).isDirectory())) { //경로가 없을경우 
 			Files.createDirectory(Paths.get(savedir)); //경로명 path생성후 디렉토리 생성
 		}
 		
@@ -47,7 +44,7 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public void fileDelete(String filename) throws Exception {
 		// TODO Auto-generated method stub
-		String savedirToday = savedir + "/20220519" ; //d:/ksy/savedir/20220519
+		String savedirToday = savedir + "/20220519" ; 
 //		File file = new File(savedirToday + "/" + filename);
 //		if (file.isFile()) {
 //			file.delete();

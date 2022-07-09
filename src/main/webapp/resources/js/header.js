@@ -14,13 +14,17 @@ $(function(){
 		$('#pLogin').show();
 		$('#pLogout').hide();
 		$('#pJoin').show();
-		$('#pMyPage').hide();
+		$('#pDropDown').hide();
+
 	}else{ //로그인 후
 		$('#pLogin').hide();
 		$('#pLogout').show();
 		$('#pJoin').hide();
-		$('#pMyPage').show();
+
+		$('#pDropDown').show();
+
 	}
+
 	
 	//로그아웃 버튼을 클릭했을 때
 	$('#pLogout').click((e)=>{

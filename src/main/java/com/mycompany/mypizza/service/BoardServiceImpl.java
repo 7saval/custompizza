@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,23 +35,14 @@ public class BoardServiceImpl implements BoardService {
 		int perPage = page.getPerPage(); //한페이지당 게시물수
 		int perBlock = page.getPerBlock(); //페이지 블럭의 수
 		
-		//1)게시물의 시작번호(mysql은 시작번호 0번 부터)
-		//오라클은 + 1
 		int startNum = (curPage-1) * perPage;
-		//2)게시물의 끝번호
 		int endNum = startNum + perPage -1;
-		
-		//3)전체페이지수
 		int totalCnt = boardRepository.selectTotalCnt(page); //전체게시물수
 		int totPage = totalCnt/perPage;
-		if (totalCnt%perPage!=0) totPage++; //나머지가 있으면 +1
-		
-		//4)페이지블럭의 시작페이지
+		if (totalCnt%perPage!=0) totPage++; 
 		int startPage= curPage - ((curPage-1)%perBlock);
-		//5)페이지블럭의 끝페이지
 		int endPage = startPage + perBlock - 1;
-		if (endPage>totPage) endPage=totPage; //endPage는 totPage보다 작거나 같아야 한다
-
+		if (endPage>totPage) endPage=totPage;
 		
 		//page 세팅
 		page.setStartNum(startNum);
@@ -68,15 +60,10 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	//트랜잭션 관리(commit,rollback)
-	@Transactional
+	@Transactional(rollbackFor = {Exception.class, Error.class})
 	@Override
 	public ErrorCode insert(Board board) throws Exception {
-		//1)게시물 추가
-		//insert시 bnum세팅
 		boardRepository.insert(board);
-		System.out.println(board);
-		
-		//2)게시물 파일들 업로드 후 저장
 		boardFilesSave(board);
 		
 		return ErrorCode.SUCCESS_ADD;
@@ -85,23 +72,19 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public int updateReadCnt(int bnum) {
-		// TODO Auto-generated method stub
 		return boardRepository.updateReadCnt(bnum);
 	}
 	
-	//트랜잭션 관리
-	@Transactional
+	
+	@Transactional(rollbackFor = {Exception.class, Error.class})
 	@Override
 	public ErrorCode update(Board board, List<Integer> removeFiles) throws Exception {
-		//1) 게시물수정
 		boardRepository.update(board);
-		//2) 게시물파일 db 삭제
 		if (removeFiles!= null) {
 			for(int bfnum : removeFiles) {
 				boardFileRepository.delete(bfnum);
 			}
 		}
-		//3)게시물 파일들 업로드 후 저장
 		boardFilesSave(board);
 		
 		return ErrorCode.SUCCESS_MODIFY;
@@ -125,7 +108,6 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public int updateLikeCnt(int bnum) {
-		// TODO Auto-generated method stub
 		return boardRepository.updateLikeCnt(bnum);
 	}
 

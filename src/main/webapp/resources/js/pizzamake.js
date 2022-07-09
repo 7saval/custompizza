@@ -96,3 +96,20 @@ function paycheck(e){
 	
 	document.getElementById('Frmorder_master').submit();
 }
+
+
+$(document).ready(function(){
+ 
+    $('#receipt_time').timepicker({
+    timeFormat: 'H:mm ',
+    interval: 10,
+    minTime: '11:00',
+    maxTime: '20:00',
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true
+	});
+    
+    
+});
+

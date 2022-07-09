@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>커스텀피자</title>
-<script type="text/javascript" src="${path}/resources/js/header.js"></script>
+<script type="text/javascript" src="${path}/resources/js/header.js?ver=1"></script>
 <script type="text/javascript">
 	function sessionCheck(e){
 		e.preventDefault();
@@ -32,14 +32,24 @@
 <body>
 	<header class="d-flex justify-content-between">
 		<a href="${path}"><img alt="" src="${path}/resources/images/logo.png" width="300"></a>
-		<div>
+		<div style="display: flex">
 			<!-- 컨택스트패스 -->
 			<input type="hidden" value="${path}" id="contextPath">
 			<span id="sessionEmail">${sessionScope.email}</span>
-			<a href="${path}/login" id="pLogin" class="text-danger font-weight-bold">로그인</a>
-			<a href="${path}/logout" id="pLogout" class="text-danger font-weight-bold">로그아웃</a>
-			<a href="${path}/member/join" id="pJoin" class="text-danger font-weight-bold">회원가입</a>
-			<a href="${path}/member/info" id="pMyPage" class="text-danger font-weight-bold">마이페이지</a>
+			<a href="${path}/login" id="pLogin" class="text-danger font-weight-bold">로그인</a>&nbsp;
+			<a href="${path}/logout" id="pLogout" class="text-danger font-weight-bold">로그아웃</a>&nbsp;
+			<a href="${path}/member/join" id="pJoin" class="text-danger font-weight-bold">회원가입</a>&nbsp;
+			
+			<div class="dropdown" id="pDropDown">
+				<p class="text-danger font-weight-bold dropdown-toggle" data-toggle="dropdown" id="pMy">
+    				마이페이지
+    			</p>
+
+				<div class="dropdown-menu">
+					<a href="${path}/member/info" class="text-danger font-weight-bold dropdown-item">내정보</a>
+					<a href="${path}/order/orderlist" class="text-danger font-weight-bold dropdown-item">주문내역</a>
+				</div>
+			</div>
 		</div>
 	</header>
 	<hr>

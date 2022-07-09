@@ -73,7 +73,15 @@ public class OrderServiceImpl implements OrderService {
 		
 		return master;
 	}
-	
 
+	
+	@Override
+	public List<Order_master> selectList_master(String email) {
+		//email(고객)이 주문한 list
+		List<Order_master> omlist = order_masterRepository.selectList(email);
+		
+		return omlist;
+	}
+	
 
 }

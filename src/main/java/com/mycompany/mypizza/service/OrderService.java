@@ -15,5 +15,5 @@ public interface OrderService {
 	Order_master selectOne_master(int order_no); //주문번호의 주문마스터
 	List<Order_detail> selectList_detail(int order_no); //주문번호 하나의 detail 리스트 ( 예, 주문번호 2번의 피자디테일..)
 	
-	
+	List<Order_master> selectList_master(String email); // email(고객)이 주문한 list
 }

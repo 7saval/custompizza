@@ -31,6 +31,8 @@
   	
   	<select id="selectList" resultType="Order_master">
 		select * from order_master
-		where email like concat('%', ${findvalue}, '%' )
+		where email = #{email} 
+		order by order_no desc
+		limit 10
   	</select>
   </mapper>

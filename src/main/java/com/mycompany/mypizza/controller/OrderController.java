@@ -1,6 +1,6 @@
 package com.mycompany.mypizza.controller;
 
-import java.lang.ProcessBuilder.Redirect;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.mypizza.dto.Lowoption;
@@ -49,7 +48,6 @@ public class OrderController {
 	//pizzamake에서 <주문> 버튼 눌렀을때 
 	@PostMapping("pizzamake")
 	public String pizzamake(@ModelAttribute("order")OrderSession order, Model model) {
-		/* System.out.println(order); */
 
 		//ordersession에 details(List<Order_detail>)담고 cart로 이동
 		return "/order/cart";
@@ -82,7 +80,9 @@ public class OrderController {
 		
 		return "redirect:payinfo"; //payinfo 호출
 	}
+	
 
+	//결제정보
 	@GetMapping("payinfo")
 	public String goPayinfo(int order_no, Model model) {
 		Order_master master = orderService.selectOne_master(order_no);
@@ -90,7 +90,6 @@ public class OrderController {
 
 		model.addAttribute("master",master);
 		model.addAttribute("dlist", dlist);
-		
 		
 		return "/order/payinfo";
 	}
@@ -102,8 +101,27 @@ public class OrderController {
 	}
 	
 
-	
-	
+	//주문내역
+	@GetMapping("orderlist")
+	public void orderlist(HttpSession session, Model model) {
+		String email = (String) session.getAttribute("email");
+		
+		//order_master
+		List<Order_master> omlist = orderService.selectList_master(email);
+		
+		//order_detail
+		Map<Object, List<Order_detail>> map = new HashMap<Object, List<Order_detail>>();
+		List<Order_detail> dlist;
+		for(int i=0; i<omlist.size(); i++) {
+			int order_no = omlist.get(i).getOrder_no();
+			dlist =  orderService.selectList_detail(order_no);
+			map.put("no"+String.valueOf(order_no),dlist);			
+		}
+
+		model.addAttribute("omlist",omlist);
+		model.addAttribute("dlists",map);
+		
+	}
 	
 	
 }
